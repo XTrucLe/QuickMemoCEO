@@ -1,0 +1,15 @@
+.menuItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  color: #fff;
+  font-size: large;
+}
+
+.active {
+  width: inherit;
+  color: black;
+  background: #ffffff;
+  /* z-index: -1; */
+}

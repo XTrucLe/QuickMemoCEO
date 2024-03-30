@@ -1,0 +1,5 @@
+.container {
+  display: grid;
+  grid-template-rows: auto auto 1fr; /* 2 phần trên có chiều cao tự động, phần dưới chiếm hết chiều cao còn lại */
+  gap: 10px;
+}
