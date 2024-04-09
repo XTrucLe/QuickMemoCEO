@@ -1,0 +1,18 @@
+.dataHeader {
+  width: 100%;
+  height: auto;
+}
+.dataHeader th {
+  border: 2px solid #ccc;
+}
+.dataHeader th {
+  width: 20%;
+}
+
+.dataHeader th:nth-child(4) {
+  width: 7%;
+}
+
+.dataHeader th:nth-child(1) {
+  width: 5%;
+}
