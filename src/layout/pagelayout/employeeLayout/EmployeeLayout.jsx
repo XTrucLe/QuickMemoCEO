@@ -1,9 +1,10 @@
 import React from 'react'
-import HeadEmployee from '../../component/headEmployee/HeadEmployee'
-import ListOption from '../../component/ListOption/ListOption'
 import { useLocation } from 'react-router-dom'
-import SideBar from '../../component/sidebar/SideBar'
-import Layout from '../Layout'
+import Layout from '../../Layout'
+import SideBar from '../../../component/sidebar/SideBar';
+import ListOption from './../../../component/ListOption/ListOption';
+import HeadEmployee from '../../../component/headerContent/headEmployee/HeadEmployee';
+
 
 const ListOptions = [
     { contentName: 'Employee Detail', contentPath: '/employee/' },

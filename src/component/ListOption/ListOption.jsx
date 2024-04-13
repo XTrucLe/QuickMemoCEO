@@ -8,7 +8,6 @@ const ListOption = ({ ListOptions, CurentLocation }) => {
                 
                 return (
                     <NavLink
-                        onClick={console.log(CurentLocation)}
                         key={index}
                         exact end
                         to={options.contentPath}

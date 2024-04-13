@@ -1,2 +1,5 @@
 export { default as DefaultLayout} from './defaultLayout/DefaultLayout'
-export { default as EmployeeLayout} from './employeeLayout/EmployeeLayout';
+export { default as EmployeeLayout} from './pagelayout/employeeLayout/EmployeeLayout'
+export { default as NotificationLayout} from './pagelayout/notificationlayout/NotificationLayout'
+export { default as PayRollLayout} from './pagelayout/payrollLayout/PayRollLayout'
+export { default as MangerLayout} from './management/MangerLayout'

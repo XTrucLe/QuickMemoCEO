@@ -7,13 +7,16 @@ function Table() {
     const [tableData, setTableData] = useState([]);
 
     // useEffect(() => {
-    //     async function fetchData() {
-    //         const response = await fetch('https://your-api-endpoint.com/data');
-    //         const data = await response.json();
-    //         setTableData(data);
-    //     }
-
-    //     fetchData();
+    //     const fetchData = async () => {
+    //         try {
+    //           const response = await fetch('fakedata.json');
+    //           const jsonData = await response.json();
+    //           setTableData(jsonData);
+    //         } catch (error) {
+    //           console.error('Error fetching data:', error);
+    //         }
+    //       };
+    //       fetchData();
     // }, []);
 
     return (
