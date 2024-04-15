@@ -11,13 +11,11 @@ const overView = [
 ]
 const ManagerOverview = () => {
 
-
-
     return (
         <div className="p-4">
-            <div className="grid grid-cols-4 gap-4 mt-1 h-auto ">
+            <div className="flex flex-wrap gap-4 mt-0 h-auto ">
                 {overView.map((employee) => (
-                    <div key={employee.name} className='flex border border-black h-auto rounded-xl bg-slate-50'>
+                    <div key={employee.name} className='flex border border-black min-w-56 h-auto rounded-xl bg-slate-50 select-none'>
                         <div className='w-1/4 h-full font-medium text-4xl grid place-items-center text-red-500  '>
                             <FontAwesomeIcon icon={employee.icon} />
                         </div>

@@ -1,22 +1,20 @@
 import React from 'react';
 
-function TableRow({ data }) {
+function TableRow({ index, data }) {
   const renderCell = (value) => (
-    <td>
-      <div className=' max-h-10 min-h-4' title={value}>
-        {value || '-'}
-      </div>
+    <td className='px-1 border-2'>
+      {value || '-'}
     </td>
   );
 
   return (
-    <tr>
-      {renderCell(data?.stt)}
-      {renderCell(data?.id)}
-      {renderCell(data?.name)}
-      {renderCell(data?.gender)}
-      {renderCell(data?.email)}
-      {renderCell(data?.phone)}
+    <tr className='max-h-10 min-h-4' style={{ background: `${index % 2 === 0 ? 'cyan' : ''}` }}>
+      {renderCell(data?.STT)}
+      {renderCell(data?.ID)}
+      {renderCell(data?.Name)}
+      {renderCell(data?.Gender)}
+      {renderCell(data?.Email)}
+      {renderCell(data?.Phone)}
     </tr>
   );
 }
