@@ -1,2 +1,2 @@
-export const managerAPI='http://localhost:3001/manager'
+export const managerAPI='http://localhost:8081/home/'
 

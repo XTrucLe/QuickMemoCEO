@@ -10,9 +10,9 @@ const Header = ({isSidebarShow, setIsSidebarShow}) => {
     setIsSidebarShow(!isSidebarShow);
   }
   return (
-    <div className=' fixed flex justify-between h-12 px-5 py-3 shadow-lg bg-slate-50' style={{width:`${isSidebarShow?'calc(100% - 208px)':'100%'}`}}>
+    <div className=' fixed flex justify-between h-12 px-5 py-3 shadow-lg bg-slate-50 z-50' style={{width:`${isSidebarShow?'calc(100% - 208px)':'100%'}`}}>
         <FontAwesomeIcon icon={faBars} onClick={handleMenuBar}></FontAwesomeIcon>
-        <Link to='/notification'><FontAwesomeIcon icon={faBell}></FontAwesomeIcon></Link>              
+        <Link to='/notification'><FontAwesomeIcon icon={faBell}></FontAwesomeIcon></Link>
     </div>
   )
 }

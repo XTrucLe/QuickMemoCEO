@@ -4,8 +4,9 @@ import Notification from '../pages/notification/Notification'
 import Employee from '../pages/Employee/Employee'
 import { Payroll } from '../pages/payroll/Payroll'
 import Statistical from '../pages/statistical/Statistical'
-import { DefaultLayout, EmployeeLayout, MangerLayout, NotificationLayout } from '../layout'
 import Manager from '../pages/manager/Manager'
+import NewEmployee from '../pages/newemployee/NewEmployee'
+import { DefaultLayout, EmployeeLayout, MangerLayout, NotificationLayout } from '../layout'
 
 //List of routers to use for page navigation
  const defaultRouter = [
@@ -19,5 +20,6 @@ import Manager from '../pages/manager/Manager'
     { path:'/payroll', element: <Payroll/>, layout: DefaultLayout},
     { path:'/statistical', element: <Statistical/>},
     { path:'/management', element: <Manager/>, layout: MangerLayout},
+    { path:'/newEmployee', element: <NewEmployee/>},
 ]
 export {defaultRouter}
