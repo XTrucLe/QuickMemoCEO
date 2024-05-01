@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBriefcase, faUserCheck, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import { faFaceSmile } from '@fortawesome/free-regular-svg-icons'
-import { managerAPI } from '../../api'
 import axios from 'axios'
+import { employeeAPI } from '../../api'
 
 const overView = [
-    { icon: faUserGroup, name: 'Total Employees', value: '', endPoint: managerAPI },
-    { icon: faUserCheck, name: 'Active Employees', value: 181, endPoint: managerAPI },
+    { icon: faUserGroup, name: 'Total Employees', value: '', endPoint: employeeAPI },
+    { icon: faUserCheck, name: 'Active Employees', value: 181, endPoint:'' },
     { icon: faFaceSmile, name: 'On Leave', value: 17, endPoint: '' },
     { icon: faBriefcase, name: 'Onboarding', value: 27, endPoint: '' },
 ]

@@ -3,7 +3,7 @@ import React from 'react'
 
 const PersonalInformation = () => {
   return (
-    <div className='grid grid-cols-2 gap-x-5'>
+    <div className='grid grid-cols-2 gap-x-5 mb-auto'>
       <p className='p-2 col-span-2 bg-green-500 mb-1'>Personal information</p>
       <Form.Item
         name="PERSONAL_ID"

@@ -1,2 +1,2 @@
-export const managerAPI='http://localhost:8081/home/'
+export const employeeAPI='http://localhost:8081/home/'
 

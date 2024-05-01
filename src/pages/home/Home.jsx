@@ -7,8 +7,10 @@ const Home = () => {
         <h1 className='text-3xl font-bold'>Dashboard</h1>
         <p className='h-full pt-3 pl-1' style={{color: 'rgb(178, 190, 201)'}}>Control panel</p>
       </div>
+      {/* option about manager!*/}
       <Option ></Option>
-    
+      {/* main chart in dashboard */}
+
     </div>
 
   )

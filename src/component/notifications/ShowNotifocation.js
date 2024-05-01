@@ -1,21 +1,23 @@
 import React from 'react';
 import { notification } from 'antd';
+import { CheckCircleOutlined, CloseCircleOutlined, ExclamationCircleOutlined, InfoCircleOutlined } from '@ant-design/icons';
+
 
 const ShowNotification = (props) => {
   const { message, description, type, duration, onClose, ...rest } = props;
 
   const notificationType = {
     success: {
-      color: '#52c41a',
+      icon: <CheckCircleOutlined style={{ color: '#52c41a' }} />,
     },
     error: {
-      color: '#ff4d4f',
+      icon: <CloseCircleOutlined style={{ color: '#ff4d4f' }} />,
     },
     warning: {
-      color: '#faad14',
+      icon: <ExclamationCircleOutlined style={{ color: '#faad14' }} />,
     },
     info: {
-      color: '#1890ff',
+      icon: <InfoCircleOutlined style={{ color: '#1890ff' }} />,
     },
   }[type];
 
@@ -28,7 +30,7 @@ const ShowNotification = (props) => {
 
   return notification.open({
     message: (
-      <div className='w-full h-auto font-bold px-3' style={{ background: notificationType.color }}>
+      <div className='w-full h-auto font-bold px-3' >
         {message}
       </div>
     ),
@@ -37,6 +39,7 @@ const ShowNotification = (props) => {
         {description}
       </div>
     ),
+    icon: notificationType.icon,
     placement: 'topRight',
     style: {
       paddingLeft:'-5px'
