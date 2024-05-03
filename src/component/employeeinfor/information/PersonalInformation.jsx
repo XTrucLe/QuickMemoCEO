@@ -1,7 +1,7 @@
 import { DatePicker, Form, Input, Select } from 'antd'
 import React from 'react'
 
-const PersonalInformation = () => {
+const PersonalInformation = ({employee}) => {
   return (
     <div className='grid grid-cols-2 gap-x-5 mb-auto'>
       <p className='p-2 col-span-2 bg-green-500 mb-1'>Personal information</p>
@@ -11,7 +11,7 @@ const PersonalInformation = () => {
         rules={[{ required: true, message: "Please input Personal ID" }]}
         className='col-span-2'
       >
-        <Input />
+        <Input defaultValue={employee?.PERSONAL_ID}/>
       </Form.Item>
 
       <Form.Item
@@ -19,7 +19,7 @@ const PersonalInformation = () => {
         label="First Name"
         rules={[{ required: true, message: "Please input First Name" }]}
       >
-        <Input />
+        <Input defaultValue={employee?.CURRENT_FIRST_NAME}/>
       </Form.Item>
 
       <Form.Item
@@ -27,14 +27,14 @@ const PersonalInformation = () => {
         label="Last Name"
         rules={[{ required: true, message: "Please input Last Name" }]}
       >
-        <Input />
+        <Input defaultValue={employee?.CURRENT_LAST_NAME}/>
       </Form.Item>
 
       <Form.Item
         name="CURRENT_MIDDLE_NAME"
         label="Middle Name"
       >
-        <Input />
+        <Input defaultValue={employee?.CURRENT_MIDDLE_NAME}/>
       </Form.Item>
 
       <Form.Item
@@ -42,7 +42,7 @@ const PersonalInformation = () => {
         label="Birth Date"
         rules={[{ required: true, message: "Please select Birth Date" }]}
       >
-        <DatePicker format="MM/DD/YYYY" showTime={false} className='w-full' />
+        <DatePicker format="MM/DD/YYYY" showTime={false} className='w-full' defaultValue={employee?.BIRTH_DATE}/>
       </Form.Item>
 
       <Form.Item
@@ -50,14 +50,14 @@ const PersonalInformation = () => {
         label="Social Security Number"
         rules={[{ required: true, message: "Please input Social Security Number" }]}
       >
-        <Input />
+        <Input defaultValue={employee?.SOCIAL_SECURITY_NUMBER}/>
       </Form.Item>
 
       <Form.Item
         name="DRIVERS_LICENSE"
         label="Drivers License"
       >
-        <Input />
+        <Input defaultValue={employee?.DRIVERS_LICENSE}/>
       </Form.Item>
 
       <Form.Item
@@ -65,14 +65,14 @@ const PersonalInformation = () => {
         label="Address 1"
         rules={[{ required: true, message: "Please input Address 1" }]}
       >
-        <Input />
+        <Input defaultValue={employee?.CURRENT_ADDRESS_1}/>
       </Form.Item>
 
       <Form.Item
         name="CURRENT_ADDRESS_2"
         label="Address 2"
       >
-        <Input />
+        <Input defaultValue={employee?.CURRENT_ADDRESS_2}/>
       </Form.Item>
 
       <Form.Item
@@ -80,7 +80,7 @@ const PersonalInformation = () => {
         label="City"
         rules={[{ required: true, message: "Please input City" }]}
       >
-        <Input />
+        <Input defaultValue={employee?.CURRENT_CITY}/>
       </Form.Item>
 
       <Form.Item
@@ -88,7 +88,7 @@ const PersonalInformation = () => {
         label="Country"
         rules={[{ required: true, message: "Please input Country" }]}
       >
-        <Input />
+        <Input defaultValue={employee?.CURRENT_COUNTRY}/>
       </Form.Item>
 
       <Form.Item
@@ -96,7 +96,7 @@ const PersonalInformation = () => {
         label="Zip"
         rules={[{ required: true, message: "Please input Zip" }]}
       >
-        <Input />
+        <Input defaultValue={employee?.CURRENT_ZIP}/>
       </Form.Item>
 
       <Form.Item
@@ -104,7 +104,7 @@ const PersonalInformation = () => {
         label="Gender"
         rules={[{ required: true, message: "Please select Gender" }]}
       >
-        <Select>
+        <Select defaultValue={employee?.CURRENT_GENDER}>
           <Select.Option value="male">Male</Select.Option>
           <Select.Option value="female">Female</Select.Option>
           <Select.Option value="other">Other</Select.Option>
@@ -122,7 +122,7 @@ const PersonalInformation = () => {
           },
         ]}
       >
-        <Input />
+        <Input defaultValue={employee?.CURRENT_PHONE_NUMBER}/>
       </Form.Item>
 
       <Form.Item
@@ -135,7 +135,7 @@ const PersonalInformation = () => {
             message: "Invalid email address",
           },
         ]}      >
-        <Input />
+        <Input defaultValue={employee?.CURRENT_PERSONAL_EMAIL}/>
       </Form.Item>
 
       <Form.Item
@@ -156,7 +156,7 @@ const PersonalInformation = () => {
         label="Ethnicity"
         rules={[{ required: true, message: "Please select Ethnicity" }]}
       >
-        <Select>
+        <Select defaultValue={employee?.ETHNICITY}>
           <Select.Option value="white">White</Select.Option>
           <Select.Option value="black">Black</Select.Option>
           <Select.Option value="asian">Asian</Select.Option>
@@ -171,7 +171,7 @@ const PersonalInformation = () => {
         label="Benefit Plan ID"
         rules={[{ required: true, message: "Please input BENEFIT_PLAN_ID" }]}
       >
-        <Input />
+        <Input defaultValue={employee?.BENEFIT_PLAN_ID}/>
       </Form.Item>
 
       <Form.Item
@@ -179,7 +179,7 @@ const PersonalInformation = () => {
         label="Shareholder Status"
         rules={[{ required: true, message: "Please select Shareholder Status" }]}
       >
-        <Select>
+        <Select defaultValue={employee?.SHAREHOLDER_STATUS}>
           <Select.Option value="yes">Yes</Select.Option>
           <Select.Option value="no">No</Select.Option>
         </Select>

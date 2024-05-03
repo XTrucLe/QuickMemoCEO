@@ -1,5 +1,6 @@
 import React from 'react'
 import Option from '../../component/DashboardOption/Option'
+import Information from '../../component/form/Information'
 const Home = () => {
   return (
     <div>
@@ -10,7 +11,8 @@ const Home = () => {
       {/* option about manager!*/}
       <Option ></Option>
       {/* main chart in dashboard */}
-
+      {/* <Employee /> */}
+      <Information HRM={true}/>
     </div>
 
   )
