@@ -14,7 +14,7 @@ const HeadEmployee = () => {
     <div className='grid grid-cols-2 gap-5'>
       <h2 className=' text-3xl font-bold'>Employee Management</h2>
       <div className='flex justify-end items-center'>
-        <Link to='/newEmployee'>
+        <Link to='/manage/newEmployee'>
           <FontAwesomeIcon icon={faUserPlus} className=' text-3xl px-3 '></FontAwesomeIcon>
         </Link>
         <Search />

@@ -1,33 +1,32 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { Button, Table } from 'antd'
-import EmployeeModal from '../../component/modal/EmployeeModal';
-import { employeeAPI } from '../../api';
 import DeleteConfirm from './../../component/modal/Confirm';
+import { handleActionClick } from './../../component/table/action/HandleAction';
+import EmployeeModal from '../../component/modal/Admin_Employee';
+import { ListAPI, Manage } from '../../api';
+import { HandleSearch } from '../../component/search/HandleSearch';
+import { SearchContext } from './../../layout/Layout';
+import GetData from './../../api/REST/Get';
 
 // main processing function
 const Manager = () => {
   const [tableData, setTableData] = useState([]);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [modalType, setModalType] = useState(null);
+  const { searchTerm } = useContext(SearchContext)
 
+  const getData = GetData({ url: Manage.employeeInfo , dataField: 'ListEmployee' })
 
   useEffect(() => {
-    const fetchData = async () => {
-      // handle any errors that may occur during the API call.
-      try {
-        // make a GET request to the API endpoint.
-        const response = await axios.get(employeeAPI);
-        console.log(response.data?.ListEmployee);
-        // set as the new state for the tableData 
-        setTableData(response.data?.ListEmployee);
+    try {
+      //filter table data fields based on the search term
+      setTableData(HandleSearch({ searchText: searchTerm, data: getData }));
 
-      } catch (error) {
-        console.error(error);
-      }
+    } catch (error) {
+      console.log(error);
     }
-    fetchData();
-  }, []);
+  }, [searchTerm, getData,tableData]);
 
   //defind colum on the manage table
   const columns = [
@@ -35,11 +34,13 @@ const Manager = () => {
       title: 'ID Employee',
       dataIndex: 'idEmployee',
       key: 'idEmployee',
+      width: '115px'
     },
     {
       title: 'No.Employee',
       dataIndex: 'Employee Number',
       key: 'employeeNumber',
+      width: '115px',
       sorter: (a, b) => a['Employee Number'] - b['Employee Number'], // Sort by Employee Number
       sortDirections: ['ascend', 'descend'],
     },
@@ -76,40 +77,16 @@ const Manager = () => {
       key: 'actions',
       render: (text, record) => (
         <span>
-          <Button type="default" onClick={() => handleActionClick(record, 'edit')}>Edit</Button>
-          <Button danger type="default" onClick={() => handleActionClick(record, 'delete')}>Delete</Button>
+          <Button ghost type="primary" onClick={() => handleTableClick(record, 'edit')}>Edit</Button>
+          <Button danger ghost type="primary" onClick={() => handleTableClick(record, 'delete')}>Delete</Button>
         </span>
       ),
     },
   ];
 
   //Process ation change events when click on rows
-  const handleActionClick = (record, action) => {
-    setSelectedEmployee(record);
-    const actionLowerCase = action.toLowerCase();
-
-    switch (actionLowerCase) {
-      case 'edit':
-        setModalType('edit');
-        console.log('Edit button clicked:', record);
-        break;
-      case 'delete':
-        if (!modalType) {
-          setModalType('delete');
-        }
-        console.log('Delete button clicked:', record);
-        break;
-      case 'row':
-        setSelectedEmployee(record);
-        setModalType('employee');
-        console.log('Row clicked:', record);
-
-        break;
-      default:
-        // Do nothing
-        break;
-    }
-  };
+  const handleTableClick = (record, action) =>
+    handleActionClick(record, action, setSelectedEmployee, setModalType);
 
   // Đóng modal
   const handleModalClose = () => {
@@ -123,22 +100,22 @@ const Manager = () => {
         dataSource={tableData}
         pagination={{ pageSize: 50 }}
         scroll={{ y: 400 }}
+        size='middle'
         onRow={(record) => ({
-          // add new onclick event for row selection
+          // Add new onclick event for row selection
           onClick: (event) => {
-            const targetCell = event.target.closest('td'); // Lấy ô được click
-            //Deterministic positioning of last column
-            const isLastColumn = targetCell.cellIndex === targetCell.parentElement.cells.length - 1;
-
-            if (!isLastColumn)
-              handleActionClick(record, 'row')
-
+            // Check if the clicked cell is not the last column
+            if (event.target.closest('td').cellIndex !== event.target.closest('tr').cells.length - 1) {
+              handleTableClick(record, 'row');
+            }
           },
         })}
       />
       {/* Modals in table */}
       {modalType === 'delete' && (
         <DeleteConfirm
+          id={selectedEmployee.idEmployee}
+          deleteAPI={ListAPI.DeleteAPI}
           visible={true}
           onClose={handleModalClose}
         />
@@ -157,7 +134,6 @@ const Manager = () => {
           onClose={handleModalClose}
         />
       )}
-
     </>
   )
 }

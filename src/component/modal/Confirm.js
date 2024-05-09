@@ -3,44 +3,37 @@ import { Modal } from 'antd';
 import ShowNotification from '../notifications/ShowNotifocation';
 import axios from 'axios';
 
-const deleteAPI = '';
-const DeleteConfirm = ({ employee, visible, onClose }) => {
+
+const DeleteConfirm = ({ id, deleteAPI, visible, onClose }) => {
 
   const handleOk = async () => {
 
     try {
-      const response = {
-        status: 500,
-        data: {
-          message: 'Item deleted successfully'
-        }
-      };
-      // = await axios.delete(deleteAPI + `${employee.id}`);
-
-
+      const response = await axios.delete(`${deleteAPI}/${id}`);
+      console.log(response.data)
       if (response.status === 200) {
         ShowNotification({
-          message: 'Accepted',
-          description: 'Đã xóa trường dữ liệu!',
+          message: 'Succeessfull',
+          description: 'Employee information is deleted!',
           type: 'success',
           duration: 2
         });
-        onClose();
-        return true; // Xác nhận việc xóa thành công
+        onClose();//close modal
+        return true; // accepted response
+        
       } else {
         ShowNotification({
           message: 'Failed',
-          description: 'Failed to delete item!',
+          description: 'Failed to delete Employee information!',
           type: 'error',
           duration: 2
         });
-        onClose();
-        return false; // Xác nhận việc xóa không thành công
+        onClose();//Close modal
+        return false; // 
       }
     } catch (e) {
-      console.error('Error deleting item:', e);
+      console.error('Error deleting item:', e.message);
     }
- // Đóng modal khi xác nhận xóa
   };
 
   const handleCancel = () => {

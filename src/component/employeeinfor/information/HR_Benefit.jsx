@@ -1,7 +1,7 @@
 import { Form, Input, InputNumber } from 'antd'
 import React from 'react'
 
-const BenefitInfor = () => {
+const Benefit = ({employee}) => {
   return (
     <div className='grid grid-cols-2 gap-x-5 mb-auto'>
       <p className='p-2 col-span-2 bg-green-500 mb-1'>Benifit Plan information</p>
@@ -10,7 +10,7 @@ const BenefitInfor = () => {
         label="Benefit Plan ID"
         rules={[{ required: true, message: 'Please input BENEFIT_PLANS_ID!' }]}
       >
-        <Input />
+        <Input defaultValue={employee?.BENEFIT_PLANS_ID}/>
       </Form.Item>
 
       <Form.Item
@@ -18,7 +18,7 @@ const BenefitInfor = () => {
         label="Plane Name"
         rules={[{ required: true, message: 'Please input PLAN_NAME!' }]}
       >
-        <Input />
+        <Input defaultValue={employee?.PLAN_NAME}/>
       </Form.Item>
 
       <Form.Item
@@ -26,7 +26,7 @@ const BenefitInfor = () => {
         label="Deducayable"
         rules={[{ required: true, message: 'Please input DEDUCTABLE!' }]}
       >
-        <InputNumber className='w-full' />
+        <InputNumber className='w-full' defaultValue={employee?.DEDUCTABLE}/>
       </Form.Item>
 
       <Form.Item
@@ -37,10 +37,10 @@ const BenefitInfor = () => {
           { type: 'number', min: 0, max: 50, message: 'Percentage Copay must be less than 50!' }
         ]}
       >
-        <InputNumber addonAfter="%" className='w-full' />
+        <InputNumber addonAfter="%" className='w-full' defaultValue={employee?.PERCENTAGE_COPAY}/>
       </Form.Item>
     </div>
   )
 }
 
-export default BenefitInfor
+export default Benefit

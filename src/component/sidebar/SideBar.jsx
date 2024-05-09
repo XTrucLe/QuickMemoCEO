@@ -29,7 +29,7 @@ const SideBar = () => {
       <NavLink to='/statistical' className='menuItem' activeClassName='active'>
         <FontAwesomeIcon className='w-9' icon={faChartSimple}></FontAwesomeIcon> Statistical</NavLink>
 
-      <NavLink to='/management' className='menuItem' activeClassName='active'>
+      <NavLink to='/manage' className='menuItem' activeClassName='active'>
         <FontAwesomeIcon className='w-9' icon={faUserSecret}></FontAwesomeIcon> Managerment</NavLink>
     </div>
   )

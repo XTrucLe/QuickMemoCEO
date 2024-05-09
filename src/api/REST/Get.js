@@ -1,12 +1,21 @@
 import axios from 'axios';
+import { useState } from 'react';
 
-const GetData = async (url, setData) => {
+const GetData = ({ url, dataField = null }) => {
+  const [tableData, setTableData] = useState([]);
 
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => setData(data))
-    .catch((error) => console.error(error));
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(url);
+      setTableData(response?.data[dataField] || []);
 
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  fetchData();
+
+  return tableData;
 };
-
 export default GetData;

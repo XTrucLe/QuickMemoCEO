@@ -1,9 +1,9 @@
 import React from 'react'
 import Layout from '../../Layout'
-import HeadNotification from './../../../component/headerContent/headNotification/HeadNotification';
+import HeadNotification from '../../../component/headerContent/headNotification/HeadNotification';
 import SideBar from '../../../component/sidebar/SideBar';
 
-const NotificationLayout = ({ children }) => {
+const Notification = ({ children }) => {
     return (
         <Layout
             sidebar={<SideBar />}
@@ -18,4 +18,4 @@ const NotificationLayout = ({ children }) => {
     )
 }
 
-export default NotificationLayout
+export default Notification

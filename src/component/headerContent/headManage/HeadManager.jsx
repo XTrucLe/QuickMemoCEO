@@ -10,7 +10,7 @@ const HeadManager = () => {
             <div className='flex flex-grow justify-between'>
                 <h1 className=' text-3xl font-bold'> Management</h1>
                 <div className='flex ml-auto mr-2'>
-                    <Link to='/newemployee'
+                    <Link to='/manage/newemployee'
                         className='mr-2 p-2 rounded-xl border bg-blue-700 text-cyan-50 font-bold'
                     >
                         Add new Employee

@@ -1,13 +1,15 @@
 import { Button, Form } from 'antd'
 import React from 'react'
-import PersonalInformation from './../employeeinfor/information/PersonalInformation';
-import BenefitInfor from './../employeeinfor/information/BenefitInfor';
-import EmployeeInformation from './../employeeinfor/information/EmployeeInformation';
-import JobInformation from './../employeeinfor/information/JobInformation';
+import JobInformation from '../employeeinfor/information/HR_PrevJob';
+import Benefit from '../employeeinfor/information/HR_Benefit';
+import Personal from '../employeeinfor/information/HR_Personal';
+import Employee from '../employeeinfor/information/HR_Employment';
 
 const Information = ({ componentDisabled, HRM }) => {
     componentDisabled = true
-    const finish = () => { }
+    const finish = (value) => { 
+        
+    }
     return (
         <Form
             layout='horizontal'
@@ -16,9 +18,9 @@ const Information = ({ componentDisabled, HRM }) => {
         >
             {HRM &&
                 <>
-                    <PersonalInformation />
-                    <EmployeeInformation />
-                    <BenefitInfor />
+                    <Personal />
+                    <Employee />
+                    <Benefit />
                     <JobInformation />
                 </>
             }
