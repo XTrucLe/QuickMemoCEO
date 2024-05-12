@@ -43,7 +43,10 @@ const Personal = ({ employee }) => {
         name="BIRTH_DATE"
         rules={[{ required: true, message: "Please select Birth Date" }]}
       >
-        <DatePicker format="MM/DD/YYYY" showTime={false} className='w-full' defaultValue={employee ? dayjs(employee?.BIRTH_DATE) : ''} />
+        <DatePicker format="MM/DD/YYYY"
+          showTime={false} className='w-full'
+          defaultValue={employee && employee.BIRTH_DATE ? dayjs(employee?.BIRTH_DATE) : ''}
+        />
       </Form.Item>
 
       <Form.Item
@@ -90,7 +93,7 @@ const Personal = ({ employee }) => {
         label="Marital Status"
         rules={[{ required: true, message: "Please select Marital Status" }]}
       >
-        <Select>
+        <Select defaultValue={employee?.CURRENT_MARITAL_STATUS}>
           <Select.Option value="single">Single</Select.Option>
           <Select.Option value="married">Married</Select.Option>
           <Select.Option value="divorced">Divorced</Select.Option>

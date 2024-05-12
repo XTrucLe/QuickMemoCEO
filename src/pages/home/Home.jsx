@@ -12,7 +12,6 @@ const Home = () => {
       <Option ></Option>
       {/* main chart in dashboard */}
       {/* <Employee /> */}
-      <Information HRM={true}/>
     </div>
 
   )

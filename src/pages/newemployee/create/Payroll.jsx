@@ -12,14 +12,14 @@ const AddPayRoll = () => {
     if (!response)
       ShowNotification({
         message: 'Successfully',
-        description: 'Added data successfully',
+        description: 'Create a new data is successful',
         type: 'success',
         duration: 2
       });
     else
       ShowNotification({
-        message: 'Failure',
-        description: 'Added data failed',
+        message: 'Failed',
+        description: 'Failed to create a new data',
         type: 'error',
         duration: 2
       });

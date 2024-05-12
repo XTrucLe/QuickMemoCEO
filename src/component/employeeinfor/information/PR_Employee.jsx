@@ -17,27 +17,27 @@ const PrEmployee = ({ employee, disableItem = true }) => {
 
       <Form.Item
         label="Employee Number"
-        name="Employee Number"
+        name="EmployeeNumber"
         rules={[{ required: true, message: 'Please input the employee number!' }]}
       >
-        <Input defaultValue={employee ? employee['Employee Number'] : ''} />
+        <Input defaultValue={employee?.EmployeeNumber} />
       </Form.Item>
       {!disableItem &&
         <>
           <Form.Item
             label="First Name"
-            name="First Name"
+            name="FirstName"
             rules={[{ required: true, message: "Please input First Name" }]}
           >
-            <Input defaultValue={employee ? employee['First Name'] : ''} />
+            <Input defaultValue={employee?.FirstName} />
           </Form.Item>
 
           <Form.Item
             label="Last Name"
-            name="Last Name"
+            name="LastName"
             rules={[{ required: true, message: "Please input Last Name" }]}
           >
-            <Input defaultValue={employee ? employee['Last Name'] : ''} />
+            <Input defaultValue={employee?.LastName} />
           </Form.Item>
         </>
       }
@@ -51,34 +51,34 @@ const PrEmployee = ({ employee, disableItem = true }) => {
 
       <Form.Item
         label="Pay Rate"
-        name="Pay Rate"
+        name="PayRate"
         rules={[{ required: true, message: 'Please input the pay rate!' }]}
       >
-        <Input type="number" step="1000" defaultValue={employee ? employee['Pay Rate'] : ''} />
+        <Input type="number" step="1000" defaultValue={employee?.PayRate} />
       </Form.Item>
 
       <Form.Item
         label="Vacation Days"
-        name="Vacation Days"
+        name="VacationDays"
         rules={[{ required: true, message: 'Please input the paid to date!' }]}
       >
-        <Input type="number" step="0.01" defaultValue={employee ? employee['Vacation Days'] : ''} />
+        <Input type="number" step="0.01" defaultValue={employee?.VacationDays} />
       </Form.Item>
 
       <Form.Item
         label="Paid To Date"
-        name="Paid To Date"
+        name="PaidToDate"
         rules={[{ required: true, message: 'Please input the paid to date!' }]}
       >
-        <Input type="number" step="0.01" defaultValue={employee ? employee['Paid To Date'] : ''} />
+        <Input type="number" step="0.01" defaultValue={employee?.PaidToDate} />
       </Form.Item>
 
       <Form.Item
         label="Paid Last Year"
-        name="Paid Last Year"
+        name="PaidLastYear"
         rules={[{ required: true, message: 'Please input the paid last year!' }]}
       >
-        <Input type="number" step="0.01" defaultValue={employee ? employee['Paid Last Year'] : ''} />
+        <Input type="number" step="0.01" defaultValue={employee?.PaidLastYear} />
       </Form.Item>
     </div>
   )

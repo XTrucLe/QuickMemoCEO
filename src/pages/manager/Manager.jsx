@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import axios from 'axios'
 import { Button, Table } from 'antd'
 import DeleteConfirm from './../../component/modal/Confirm';
 import { handleActionClick } from './../../component/table/action/HandleAction';
@@ -16,6 +15,7 @@ const Manager = () => {
   const [modalType, setModalType] = useState(null);
   const { searchTerm } = useContext(SearchContext)
 
+  //get data from API
   const getData = GetData({ url: Manage.employeeInfo , dataField: 'ListEmployee' })
 
   useEffect(() => {
@@ -31,9 +31,9 @@ const Manager = () => {
   //defind colum on the manage table
   const columns = [
     {
-      title: 'ID Employee',
-      dataIndex: 'idEmployee',
-      key: 'idEmployee',
+      title: 'PERSONAL_ID',
+      dataIndex: 'PERSONAL_ID',
+      key: 'PERSONAL_ID',
       width: '115px'
     },
     {
@@ -48,8 +48,8 @@ const Manager = () => {
       title: 'Full Name',
       dataIndex: 'Full Name',
       key: 'fullName',
-      render: (text, record) => `${record['First Name']} ${record['Last Name']}`,
-      sorter: (a, b) => a['First Name'].localeCompare(b['First Name']), // Sort by Full Name
+      render: (text, record) => `${record['CURRENT_FIRST_NAME']} ${record['CURRENT_LAST_NAME']}`,
+      sorter: (a, b) => a['CURRENT_FIRST_NAME'].localeCompare(b['CURRENT_FIRST_NAME']), // Sort by Full Name
       sortDirections: ['ascend', 'descend'],
     },
     {
@@ -129,6 +129,7 @@ const Manager = () => {
       )}
       {modalType === 'edit' && (
         <EmployeeModal
+          isEdit={true}
           employee={selectedEmployee}
           visible={true}
           onClose={handleModalClose}

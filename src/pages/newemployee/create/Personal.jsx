@@ -11,17 +11,17 @@ const AddPersonal = () => {
 
     if (!response)
       ShowNotification({
-        message: 'Successfully',
-        description: 'Added data successfully',
+        message: 'Successfull',
+        description: 'Create a new personal is successfull',
         type: 'success',
-        duration: 2
+        duration: 1
       });
     else
       ShowNotification({
         message: 'Failure',
-        description: 'Added data failed',
+        description: 'Add data failed',
         type: 'error',
-        duration: 2
+        duration: 1
       });
   }
   return (

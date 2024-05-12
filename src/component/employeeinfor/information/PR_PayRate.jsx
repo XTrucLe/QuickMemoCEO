@@ -8,34 +8,34 @@ const PayRates = ({ employee }) => {
     <div className='grid grid-cols-2 gap-x-5'>
       <Form.Item
         label="Pay Rate Name"
-        name="payRateName"
+        name="PayRateName"
         rules={[{ required: true, message: 'Please input the pay rate name!' }]}
       >
-        <Input defaultValue={employee ? employee['Pay Rate Name'] : ''} />
+        <Input defaultValue={employee?.PayRateName} />
       </Form.Item>
 
       <Form.Item
         label="Value"
-        name="value"
+        name="Value"
         rules={[{ required: true, message: 'Please input the value!' }]}
       >
-        <Input type="number" step="0.01" defaultValue={employee ? employee['Value'] : ''} />
+        <Input type="number" step="0.01" defaultValue={employee?.Value} />
       </Form.Item>
 
       <Form.Item
         label="Tax Percentage"
-        name="taxPercentage"
+        name="TaxPercentage"
         rules={[{ required: true, message: 'Please input the tax percentage!' }]}
       >
-        <Input type="number" step="0.01" defaultValue={employee ? employee['Tax Percentage'] : ''} />
+        <Input type="number" step="0.01" defaultValue={employee?.TaxPercentage} />
       </Form.Item>
 
       <Form.Item
         label="Pay Type"
-        name="payType"
+        name="PayType"
         rules={[{ required: true, message: 'Please select the pay type!' }]}
       >
-        <Select defaultValue={employee ? employee['Pay Type'] : ''}>
+        <Select defaultValue={employee?.PayType}>
           <Option value="Hourly">Hourly</Option>
           <Option value="Salary">Salary</Option>
         </Select>
@@ -43,18 +43,18 @@ const PayRates = ({ employee }) => {
 
       <Form.Item
         label="Pay Amount"
-        name="payAmount"
+        name="PayAmount"
         rules={[{ required: true, message: 'Please input the pay amount!' }]}
       >
-        <Input type="number" step="0.01" defaultValue={employee ? employee['Pay Amount'] : ''} />
+        <Input type="number" step="0.01" defaultValue={employee?.PayAmount} />
       </Form.Item>
 
       <Form.Item
         label="PT - Level C"
-        name="ptLevelC"
+        name="PT_LevelC"
         rules={[{ required: true, message: 'Please input the PT - Level C!' }]}
       >
-        <Input type="number" step="0.01" defaultValue={employee ? employee['PT - Level C'] : ''} />
+        <Input type="number" step="0.01" defaultValue={employee?.PT_LevelC} />
       </Form.Item>
     </div>
   );

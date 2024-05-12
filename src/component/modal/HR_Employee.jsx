@@ -1,12 +1,21 @@
-import { Form, Modal } from 'antd'
+import { Button, Form, Modal } from 'antd'
 import React from 'react'
 import Personal from '../employeeinfor/information/HR_Personal'
 import PrevJob from '../employeeinfor/information/HR_PrevJob'
-import Employee from '../employeeinfor/information/HR_Employment'
 import WorkingInfor from '../employeeinfor/information/HR_Working'
-import BenefitInfor from '../employeeinfor/information/BenefitInfor'
+import Benefit from '../employeeinfor/information/HR_Benefit'
+import Employment from '../employeeinfor/information/HR_Employment'
 
-const HR_Employee = ({ employee, visible, onClose }) => {
+const HrEmployee = ({ employee, visible, onClose, isEdit = false }) => {
+    const onFinish = (value) => {
+        if(!isEdit){
+            try {
+                
+            } catch (error) {
+                
+            }
+        }
+    }
     return (
         <Modal
             title=<div className='text-xl font-extrabold'>Employee Information</div>
@@ -14,16 +23,30 @@ const HR_Employee = ({ employee, visible, onClose }) => {
             onCancel={onClose}
         >
             {employee &&
-                <Form disabled>
+                <Form
+                    disabled={!isEdit}
+                    layout='vertical'
+                    onFinish={onFinish}
+                >
                     <Personal employee={employee} />
-                    <Employee employee={employee} />
+                    <Employment employee={employee} />
                     <WorkingInfor employee={employee} />
-                    <BenefitInfor employee={employee} />
+                    <Benefit employee={employee} />
                     <PrevJob employee={employee} />
+                    <Form.Item className=''>
+                        {isEdit &&
+                            <Button
+                                type='primary' ghost htmlType='submit'
+                                className='float-end'
+                            >
+                                update
+                            </Button>
+                        }
+                    </Form.Item>
                 </Form>
             }
         </Modal>
     )
 }
 
-export default HR_Employee
+export default HrEmployee

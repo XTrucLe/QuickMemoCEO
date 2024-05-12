@@ -52,7 +52,10 @@ const Employment = ({ employee, disableItem = true }) => {
         name="HIRE_DATE_FOR_WORKING"
         rules={[{ required: true, message: 'Please input the hire date for working!' }]}
       >
-        <DatePicker format="MM/DD/YYYY" showTime={false} className='w-full' defaultValue={employee ? dayjs(employee?.HIRE_DATE_FOR_WORKING) : ''} />
+        <DatePicker
+          format="MM/DD/YYYY" showTime={false} className='w-full'
+          defaultValue={employee && employee.HIRE_DATE_FOR_WORKING ? dayjs(employee?.HIRE_DATE_FOR_WORKING) : ''}
+        />
       </Form.Item>
 
       <Form.Item
@@ -60,7 +63,10 @@ const Employment = ({ employee, disableItem = true }) => {
         name="REHIRE_DATE_FOR_WORKING"
         rules={[{ required: true, message: 'Please input the rehire date for working!' }]}
       >
-        <DatePicker format="MM/DD/YYYY" showTime={false} className='w-full' defaultValue={employee ? dayjs(employee?.REHIRE_DATE_FOR_WORKING) : ''} />
+        <DatePicker
+          format="MM/DD/YYYY" showTime={false} className='w-full'
+          defaultValue={employee && employee.REHIRE_DATE_FOR_WORKING ? dayjs(employee?.REHIRE_DATE_FOR_WORKING) : ''}
+        />
       </Form.Item>
 
       <Form.Item
@@ -68,7 +74,10 @@ const Employment = ({ employee, disableItem = true }) => {
         name="TERMINATION_DATE"
         rules={[{ required: true, message: 'Please input the termination date!' }]}
       >
-        <DatePicker format="MM/DD/YYYY" showTime={false} className='w-full' defaultValue={employee ? dayjs(employee?.TERMINATION_DATE) : ''} />
+        <DatePicker
+          format="MM/DD/YYYY" showTime={false} className='w-full'
+          defaultValue={employee && employee.TERMINATION_DATE ? dayjs(employee?.TERMINATION_DATE) : ''}
+        />
       </Form.Item>
 
       <Form.Item
@@ -76,7 +85,10 @@ const Employment = ({ employee, disableItem = true }) => {
         name="LAST_REVIEW_DATE"
         rules={[{ required: true, message: 'Please input the last review date!' }]}
       >
-        <DatePicker format="MM/DD/YYYY" showTime={false} className='w-full' defaultValue={employee ? dayjs(employee?.LAST_REVIEW_DATE) : ''} />
+        <DatePicker
+          format="MM/DD/YYYY" showTime={false} className='w-full'
+          defaultValue={employee && employee.LAST_REVIEW_DATE ? dayjs(employee?.LAST_REVIEW_DATE) : ''}
+        />
       </Form.Item>
 
       <Form.Item

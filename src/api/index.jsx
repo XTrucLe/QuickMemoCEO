@@ -4,22 +4,19 @@ const port ='8081'
 const path=`${domain}:${port}`
 export const ListAPI={
     PR_employeeAPI:`${path}/home`,
-    HR_employeeAPI:`${path}/home`,
     DashboardAPI:`${path}`,//? Waiting Conection
-    MGR_Update:`${path}/updateinfo`,
-    DeleteAPI:`${path}/deleteEmployee`,
+    DeleteAPI:`${path}/deleteinfo`,
 
     MGR_GetAll:`${path}`,//? Waiting Conection
-    CreateEmployee:`${path}/createEmployee`,
 }
 export const EmployeeAPI={
-    getEmployee:`${path}/employee`,
+    getEmployee:`${path}/allEmployment`,
 }
-export const Payroll={
-    allEmployee:`${path}/home`,
+export const payroll={
+    allEmployee:`${path}/allPayroll`,
 }
 export const Manage={
-    employeeInfo:`${path}/employeeInfo`,
+    employeeInfo:`${path}/home`,
     delete:`${path}/deleteEmployee`,
 }
 export const notification={
@@ -30,8 +27,11 @@ export const notification={
 }
 
 export const create={
-    personal:`${path}/`,
+    personal:`${path}/creates_personal`,
     employment:`${path}/employment`,
-    working:`${path}/working`,
-    payroll:`${path}/`,
+    working:`${path}/employent_working_time`,
+    payroll:`${path}/creates_payrate`,
+}
+export const update={
+    information:`${path}/`
 }

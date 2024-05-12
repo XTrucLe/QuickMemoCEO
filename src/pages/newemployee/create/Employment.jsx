@@ -11,14 +11,14 @@ const AddEmployment = () => {
     if (!response)
       ShowNotification({
         message: 'Successfully',
-        description: 'Added data successfully',
+        description: 'Successfully created new employee',
         type: 'success',
         duration: 2
       });
     else
       ShowNotification({
-        message: 'Failure',
-        description: 'Added data failed',
+        message: 'Failed',
+        description: 'Failed to create employee',
         type: 'error',
         duration: 2
       });

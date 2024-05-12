@@ -47,7 +47,12 @@ const PrevJob = ({ employee }) => {
                     },
                 }),]}
             >
-                <DatePicker format="MM/DD/YYYY" className='w-full' defaultValue={employee ? dayjs(employee?.FROM_DATE) : ''} />
+                <DatePicker
+                    format="MM/DD/YYYY" disabledTime
+                    className='w-full'
+                    defaultValue={employee && employee.FROM_DATE ? dayjs(employee.FROM_DATE) : ''}
+
+                />
             </Form.Item>
 
             <Form.Item
@@ -57,11 +62,15 @@ const PrevJob = ({ employee }) => {
                     { required: true, message: 'Please input the thru date!' },
                     // Set rule is after From_date and before today
                     ({ getFieldValue }) => ({
-                        validator(rule, value) {
-                            if (!value || new Date(getFieldValue('fromDate')).getTime() <= new Date(value).getTime()) {
-                                if (new Date(value).getTime() <= new Date().getTime())
+                        async validator(rule, value) {
+                            const fromDate = getFieldValue('fromDate');
+
+                            // Nếu không có ngày bắt đầu, hoặc ngày kết thúc trước hoặc bằng ngày bắt đầu, trả về hợp lệ
+                            if (!fromDate || new Date(fromDate).getTime() <= new Date(value).getTime()) {
+                                // Nếu ngày kết thúc không được cung cấp hoặc nằm trước ngày hiện tại, trả về hợp lệ
+                                if (!value || new Date(value).getTime() <= new Date().getTime()) {
                                     return Promise.resolve();
-                                else {
+                                } else {
                                     return Promise.reject('Thru date must be before today!');
                                 }
                             } else {
@@ -71,7 +80,10 @@ const PrevJob = ({ employee }) => {
                     }),
                 ]}
             >
-                <DatePicker format="MM/DD/YYYY" className='w-full' disabledTime value={employee ?dayjs(employee?.THRU_DATE):''} />
+                <DatePicker
+                    className='w-full'
+                    format="MM/DD/YYYY" disabledTime
+                    defaultValue={employee && employee.THRU_DATE ? dayjs(employee?.THRU_DATE) : ''} />
             </Form.Item>
 
             <Form.Item
@@ -100,10 +112,10 @@ const PrevJob = ({ employee }) => {
 
             <Form.Item
                 label="Type of Work"
-                name="typeOfWork"
+                name="TypeOfWork"
                 rules={[{ required: true, message: 'Please input the type of work!' }]}
             >
-                <Input className='w-full' defaultValue={employee?.typeOfWork} />
+                <Input className='w-full' defaultValue={employee?.TypeOfWork} />
             </Form.Item>
         </div>
     )

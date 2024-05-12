@@ -37,7 +37,7 @@ code {
   padding: 4px 8px;
   font-size: x-large;
   font-weight: bold;
-  background: #BFBFBF;
+  background: #bfbfbf;
   margin-right: 2px;
 }
 .view_pages.active {
@@ -45,8 +45,61 @@ code {
   color: white;
 }
 
-.dataHeader .th{
+.dataHeader .th {
   border: 1px solid #fff;
   margin: 1px;
   background: #fff;
+}
+/* Set up min-width for all input fields in form iten ant */
+.ant-form-item-control-input {
+  min-width: 50px; /* Thay đổi giá trị của min-width tùy theo nhu cầu */
+}
+.ant-form-item-label {
+  white-space: nowrap; /* Không ngắt dòng */
+  overflow: hidden; /* Ẩn nội dung vượt quá kích thước */
+  text-overflow: ellipsis; /* Hiển thị dấu chấm ba (...) khi nội dung quá dài */
+}
+
+/* Ghi đè màu chữ cho Input khi form disable */
+.ant-input[disabled], .ant-input-disabled, .ant-input-disabled::placeholder, 
+.ant-input[disabled]:hover, .ant-input-disabled:hover, .ant-input-disabled:hover::placeholder {
+  color: black; /* Đổi màu chữ thành đen */
+}
+
+/* Ghi đè màu viền cho Input khi form disable */
+.ant-input[disabled], .ant-input-disabled, .ant-input-disabled::placeholder, 
+.ant-input[disabled]:hover, .ant-input-disabled:hover, .ant-input-disabled:hover::placeholder {
+  border-color: black; /* Đổi màu viền thành đen */
+}
+
+/* Ghi đè màu chữ cho DatePicker khi form disable */
+.ant-picker-input[disabled] .ant-picker-input-content, 
+.ant-picker-input-disabled .ant-picker-input-content {
+  color: black; /* Đổi màu chữ thành đen */
+}
+
+/* Ghi đè màu viền cho DatePicker khi form disable */
+.ant-picker-input[disabled] .ant-picker-input-content, 
+.ant-picker-input-disabled .ant-picker-input-content {
+  border-color: black; /* Đổi màu viền thành đen */
+}
+
+/* Ghi đè màu chữ cho Select khi form disable */
+/* Ghi đè màu chữ và màu viền cho Select khi form disable */
+.ant-select-disabled .ant-select-selector, 
+.ant-select-disabled .ant-select-selection-placeholder {
+  color: black; /* Màu chữ đen */
+  border-color: black; /* Màu viền đen */
+}
+
+/* Ghi đè màu chữ cho TextArea khi form disable */
+.ant-input[disabled], .ant-input-disabled, .ant-input-disabled::placeholder, 
+.ant-input[disabled]:hover, .ant-input-disabled:hover, .ant-input-disabled:hover::placeholder {
+  color: black; /* Đổi màu chữ thành đen */
+}
+
+/* Ghi đè màu viền cho TextArea khi form disable */
+.ant-input[disabled], .ant-input-disabled, .ant-input-disabled::placeholder, 
+.ant-input[disabled]:hover, .ant-input-disabled:hover, .ant-input-disabled:hover::placeholder {
+  border-color: black; /* Đổi màu viền thành đen */
 }
