@@ -8,13 +8,13 @@ import { payroll } from './../../api/index';
 import PrInfor from '../../component/modal/PR_Infor';
 
 export const Payroll = () => {
-  const [tableData, setTableData]= useState([])
+  const [tableData, setTableData] = useState([])
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [modalType, setModalType] = useState(null);
   const { searchTerm } = useContext(SearchContext)
 
 
-  const newData= GetData({ url: payroll.allEmployee ,dataField:'ListPayRoll'})
+  const newData = GetData({ url: payroll.allEmployee, dataField: 'ListPayRoll' })
   useEffect(() => {
     try {
       setTableData(HandleSearch({ data: newData, searchText: searchTerm }));
@@ -56,21 +56,26 @@ export const Payroll = () => {
       sorter: (a, b) => a['Value'] - b['Value'], // Sort by Value
       sortDirections: ['ascend', 'descend'],
     },
-    
-  ]
-  
-  //Process ation change events when click on rows
-  const handleTableClick = (record, action) =>
-    handleActionClick(record, action, setSelectedEmployee, setModalType)
 
-  const handleModalClose = () => setModalType(null)
+  ]
+
+  //Process ation change events when click on rows
+  const handleTableClick = (record, action) => {
+    handleActionClick(record, action, setSelectedEmployee, setModalType)
+  }
+
+  // Đóng modal
+  const handleModalClose = () => {
+    setModalType(null);
+  };
 
   return (
     <>
       <Table
         columns={columns}
+        pagination={{ pageSize: 50 }}
         dataSource={tableData}
-        onRow={(record)=> handleTableClick(record, 'row')}
+        onRow={(record) => ({ onClick: () => handleTableClick(record, 'row') })}
       />
       {modalType === 'employee' && (
         <PrInfor

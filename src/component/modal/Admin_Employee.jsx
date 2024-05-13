@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Modal } from 'antd';
 import PayRatesForm from '../employeeinfor/information/PR_PayRate';
 import Personal from '../employeeinfor/information/HR_Personal';
@@ -13,9 +13,16 @@ import ShowNotification from '../notifications/ShowNotifocation';
 import { update } from '../../api';
 
 const EmployeeModal = ({ employee, visible, onClose, isEdit = false }) => {
+  // const [change, setChange] = useState(false)
+  //   const [benefitChange, setBenefitChange] = useState(false)
+  //   const [personalChange, setPersonalChange] = useState(false)
+  //   const [employmentChange, setEmploymentChange] = useState(false)
+  //   const [workingInforChange, setWorkingInforChange] = useState(false)
+  //   const [prevJobChange, setPrevJobChange] = useState(false)
+    
   const onFinish = (value) => {
     if (isEdit) {
-      const response = PutData({ url: update.information, data: value })
+      const response = PutData({ url: update.JobHistory, data: value })
       console.table(value)
       if (response === true)
         ShowNotification({
@@ -36,7 +43,7 @@ const EmployeeModal = ({ employee, visible, onClose, isEdit = false }) => {
       title=<div className='text-xl font-extrabold'>Employee Information</div>
       visible={visible}
       onCancel={onClose}
-      footer={null}
+      footer={[]}
       width={800}
     >
       {employee && (
@@ -44,6 +51,7 @@ const EmployeeModal = ({ employee, visible, onClose, isEdit = false }) => {
           disabled={!isEdit}
           layout='vertical'
           onFinish={onFinish}
+          className='mb-3'
         >
           <Personal employee={employee} />
           <Employment employee={employee} />
@@ -52,16 +60,10 @@ const EmployeeModal = ({ employee, visible, onClose, isEdit = false }) => {
           <Benefit employee={employee} />
           <PayRatesForm employee={employee} />
           <PrevJob employee={employee} />
-          {isEdit &&
-            <Form.Item className='col-span-2 float-end'>
-              <Button
-                type='primary' ghost htmlType='submit'
 
-              >
-                Update
-              </Button>
-            </Form.Item>
-          }
+          <Form.Item className='col-span-2'>
+            {isEdit && <Button type='primary' ghost htmlType='submit' className='float-end '>Update</Button>}
+          </Form.Item>
         </Form>
       )}
     </Modal>

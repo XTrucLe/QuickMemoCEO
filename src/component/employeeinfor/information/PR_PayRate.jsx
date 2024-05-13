@@ -3,39 +3,42 @@ import { Form, Input, Select } from 'antd';
 
 const { Option } = Select;
 
-const PayRates = ({ employee }) => {
+const PayRates = ({ employee, onChange }) => {
+  const setChange = () => {
+    onChange(true)
+  }
   return (
     <div className='grid grid-cols-2 gap-x-5'>
       <Form.Item
         label="Pay Rate Name"
         name="PayRateName"
-        rules={[{ required: true, message: 'Please input the pay rate name!' }]}
+        rules={employee?.PayRateName ? [] : [{ required: true, message: 'Please input the pay rate name!' }]}
       >
-        <Input defaultValue={employee?.PayRateName} />
+        <Input onChange={setChange} defaultValue={employee?.PayRateName} />
       </Form.Item>
 
       <Form.Item
         label="Value"
         name="Value"
-        rules={[{ required: true, message: 'Please input the value!' }]}
+        rules={employee?.Value ? [] : [{ required: true, message: 'Please input the value!' }]}
       >
-        <Input type="number" step="0.01" defaultValue={employee?.Value} />
+        <Input type="number" step="0.01" onChange={setChange} defaultValue={employee?.Value} />
       </Form.Item>
 
       <Form.Item
         label="Tax Percentage"
         name="TaxPercentage"
-        rules={[{ required: true, message: 'Please input the tax percentage!' }]}
+        rules={employee?.TaxPercentage ? [] : [{ required: true, message: 'Please input the tax percentage!' }]}
       >
-        <Input type="number" step="0.01" defaultValue={employee?.TaxPercentage} />
+        <Input type="number" step="0.01" onChange={setChange} defaultValue={employee?.TaxPercentage} />
       </Form.Item>
 
       <Form.Item
         label="Pay Type"
         name="PayType"
-        rules={[{ required: true, message: 'Please select the pay type!' }]}
+        rules={employee?.PayType ? [] : [{ required: true, message: 'Please select the pay type!' }]}
       >
-        <Select defaultValue={employee?.PayType}>
+        <Select onChange={setChange} defaultValue={employee?.PayType}>
           <Option value="Hourly">Hourly</Option>
           <Option value="Salary">Salary</Option>
         </Select>
@@ -44,17 +47,17 @@ const PayRates = ({ employee }) => {
       <Form.Item
         label="Pay Amount"
         name="PayAmount"
-        rules={[{ required: true, message: 'Please input the pay amount!' }]}
+        rules={employee?.PayAmount ? [] : [{ required: true, message: 'Please input the pay amount!' }]}
       >
-        <Input type="number" step="0.01" defaultValue={employee?.PayAmount} />
+        <Input type="number" step="0.01" onChange={setChange} defaultValue={employee?.PayAmount} />
       </Form.Item>
 
       <Form.Item
         label="PT - Level C"
         name="PT_LevelC"
-        rules={[{ required: true, message: 'Please input the PT - Level C!' }]}
+        rules={employee?.PT_LevelC ? [] : [{ required: true, message: 'Please input the PT - Level C!' }]}
       >
-        <Input type="number" step="0.01" defaultValue={employee?.PT_LevelC} />
+        <Input type="number" step="0.01" onChange={setChange} defaultValue={employee?.PT_LevelC} />
       </Form.Item>
     </div>
   );

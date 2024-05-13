@@ -16,7 +16,7 @@ export const payroll={
     allEmployee:`${path}/allPayroll`,
 }
 export const Manage={
-    employeeInfo:`${path}/home`,
+    employeeInfo:`${path}/allInformation`,
     delete:`${path}/deleteEmployee`,
 }
 export const notification={
@@ -33,5 +33,10 @@ export const create={
     payroll:`${path}/creates_payrate`,
 }
 export const update={
-    information:`${path}/`
+    personal:`${path}/update_personal`,
+    employment:`${path}/update_employment`,
+    JobHistory:`${path}/update_JobHistory`,
+    working:`${path}/update_employment_working_time`,
+    benefit:`${path}/update_benefit`,
+    payrate:`${path}/update_payrate`,
 }

@@ -9,7 +9,6 @@ const PrInfor = ({ employee, visible, onClose }) => {
       title=<div className='text-xl font-extrabold'>Employee Information</div>
       visible={visible}
       onCancel={onClose}
-      footer={null}
       width={800}
     >
       {employee &&

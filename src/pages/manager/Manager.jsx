@@ -16,17 +16,16 @@ const Manager = () => {
   const { searchTerm } = useContext(SearchContext)
 
   //get data from API
-  const getData = GetData({ url: Manage.employeeInfo , dataField: 'ListEmployee' })
+  const getData = GetData({ url: Manage.employeeInfo, dataField: 'ListEmployment' })
 
   useEffect(() => {
     try {
       //filter table data fields based on the search term
       setTableData(HandleSearch({ searchText: searchTerm, data: getData }));
-
     } catch (error) {
       console.log(error);
     }
-  }, [searchTerm, getData,tableData]);
+  }, [searchTerm, getData]);
 
   //defind colum on the manage table
   const columns = [
@@ -38,8 +37,8 @@ const Manager = () => {
     },
     {
       title: 'No.Employee',
-      dataIndex: 'Employee Number',
-      key: 'employeeNumber',
+      dataIndex: 'EmployeeNumber',
+      key: 'EmployeeNumber',
       width: '115px',
       sorter: (a, b) => a['Employee Number'] - b['Employee Number'], // Sort by Employee Number
       sortDirections: ['ascend', 'descend'],
@@ -96,7 +95,8 @@ const Manager = () => {
   return (
     <>
       {/* Table set up */}
-      <Table columns={columns}
+      <Table
+        columns={columns}
         dataSource={tableData}
         pagination={{ pageSize: 50 }}
         scroll={{ y: 400 }}

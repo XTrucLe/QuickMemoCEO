@@ -18,9 +18,9 @@ const Employee = () => {
 
   useEffect(() => {
     try {
-      setTableData(HandleSearch({ data: newData, searchText: searchTerm }));
+      setTableData(HandleSearch({ searchText: searchTerm, data: newData}));
     } catch (error) {
-
+      console.error(error);
     }
   }, [searchTerm, newData]);
 
@@ -29,7 +29,7 @@ const Employee = () => {
       title: 'Employment ID',
       dataIndex: 'EMPLOYMENT_ID',
       key: 'EMPLOYMENT_ID',
-      width: '115px'
+      width: '125px'
     },
     {
       title: 'Full Name',
@@ -44,10 +44,20 @@ const Employee = () => {
       dataIndex: 'CURRENT_GENDER',
       key: 'CURRENT_GENDER',
       filters: [//filter values
-        { text: 'Male', value: 'Female' },
+        { text: 'Male', value: 'Male' },
         { text: 'Female', value: 'Female' },
       ],
       onFilter: (value, record) => record.CURRENT_GENDER === value,
+    },
+    {
+      title: 'Status',
+      dataIndex: 'EMPLOYMENT_STATUS',
+      key: 'EMPLOYMENT_STATUS',
+      filters: [//filter values
+        { text: 'Active', value: 'Active' },
+        { text: 'NoActive', value: 'NoActive' },
+      ],
+      onFilter: (value, record) => record.EMPLOYMENT_STATUS.toLowerCase() === value.toLowerCase(),
     },
     {
       title: 'Personal Email',
@@ -58,6 +68,16 @@ const Employee = () => {
       title: 'Phone Number',
       dataIndex: 'CURRENT_PHONE_NUMBER',
       key: 'CURRENT_PHONE_NUMBER',
+    },
+    {
+      title: 'Job type',
+      dataIndex: 'TYPE_OF_WORKS',
+      key: 'TYPE_OF_WORKS',
+      filters: [//filter values
+        { text: 'Full Time', value: 'Full Time' },
+        { text: 'Part Time', value: 'Part Time' },
+      ],
+      onFilter: (value, record) => record.TYPE_OF_WORKS.toLowerCase() === value.toLowerCase(),
     },
     {
       title: 'Actions',
@@ -108,7 +128,7 @@ const Employee = () => {
       )}
       {modalType === 'edit' && (
         <HrEmployee
-          
+          isEdit={true}
           employee={selectedEmployee}
           visible={true}
           onClose={handleModalClose}

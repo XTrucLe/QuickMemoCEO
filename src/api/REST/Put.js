@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const PutData = async (url, data) => {
+export const PutData = async ({url, data}) => {
     try {
         const response = await axios.put(url, data);
 
