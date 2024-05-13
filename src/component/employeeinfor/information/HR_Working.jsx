@@ -3,6 +3,7 @@ import React from 'react'
 
 const WorkingInfor = ({ employee, onChange }) => {
   const setChange=()=>{
+    if(onChange)
     onChange(true)
   }
   return (

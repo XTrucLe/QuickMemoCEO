@@ -5,7 +5,8 @@ const { Option } = Select;
 
 const PayRates = ({ employee, onChange }) => {
   const setChange = () => {
-    onChange(true)
+    if (onChange)
+      onChange(true)
   }
   return (
     <div className='grid grid-cols-2 gap-x-5'>

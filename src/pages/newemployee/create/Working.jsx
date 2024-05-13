@@ -28,7 +28,7 @@ const AddWorking = () => {
       layout='horizontal'
       onFinish={onFinish}
     >
-      <WorkingInfor />
+      <WorkingInfor onchange={''}/>
       <Form.Item>
         <Button
          type='primary' htmlType='submit'

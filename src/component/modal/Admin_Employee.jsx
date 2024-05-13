@@ -13,7 +13,7 @@ import ShowNotification from '../notifications/ShowNotifocation';
 import { update } from '../../api';
 
 const EmployeeModal = ({ employee, visible, onClose, isEdit = false }) => {
-  // const [change, setChange] = useState(false)
+  //   const [change, setChange] = useState(false)
   //   const [benefitChange, setBenefitChange] = useState(false)
   //   const [personalChange, setPersonalChange] = useState(false)
   //   const [employmentChange, setEmploymentChange] = useState(false)

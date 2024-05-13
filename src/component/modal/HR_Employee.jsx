@@ -20,9 +20,10 @@ const HrEmployee = ({ employee, visible, onClose, isEdit = false }) => {
     const onFinish = async (value) => {
         if (change) {
             try {
+                
                 // Gửi request chỉ khi có sự thay đổi
                 if (benefitChange) {
-                    const responseBenefit = await PutData({url: update.benefit, data: value});
+                    const responseBenefit = await PutData({ url: update.benefit, data: value });
                     if (responseBenefit === true) {
                         ShowNotification({
                             message: 'Success',
@@ -30,6 +31,8 @@ const HrEmployee = ({ employee, visible, onClose, isEdit = false }) => {
                             type: 'success',
                             duration: 2
                         });
+                        setBenefitChange(false);
+
                     } else {
                         ShowNotification({
                             message: 'Failed',
@@ -40,7 +43,7 @@ const HrEmployee = ({ employee, visible, onClose, isEdit = false }) => {
                     }
                 }
                 if (personalChange) {
-                    const responsePersonal = await PutData({url: update.personal, data: value});
+                    const responsePersonal = await PutData({ url: update.personal, data: value });
                     console.log('Personal Change Response:', responsePersonal);
                     if (responsePersonal === true) {
                         ShowNotification({
@@ -49,6 +52,8 @@ const HrEmployee = ({ employee, visible, onClose, isEdit = false }) => {
                             type: 'success',
                             duration: 2
                         });
+                        setPersonalChange(false);
+
                     } else {
                         ShowNotification({
                             message: 'Failed',
@@ -59,7 +64,7 @@ const HrEmployee = ({ employee, visible, onClose, isEdit = false }) => {
                     }
                 }
                 if (employmentChange) {
-                    const responseEmployment = await PutData({url: update.employment, data: value});
+                    const responseEmployment = await PutData({ url: update.employment, data: value });
                     console.log('Employment Change Response:', responseEmployment);
                     if (responseEmployment === true) {
                         ShowNotification({
@@ -68,6 +73,8 @@ const HrEmployee = ({ employee, visible, onClose, isEdit = false }) => {
                             type: 'success',
                             duration: 1
                         });
+                        setEmploymentChange(false);
+
                     } else {
                         ShowNotification({
                             message: 'Failed',
@@ -78,7 +85,7 @@ const HrEmployee = ({ employee, visible, onClose, isEdit = false }) => {
                     }
                 }
                 if (workingInforChange) {
-                    const responseWorkingInfor = await PutData({url: update.working, data: value});
+                    const responseWorkingInfor = await PutData({ url: update.working, data: value });
                     console.log('Working Information Change Response:', responseWorkingInfor);
                     if (responseWorkingInfor === true) {
                         ShowNotification({
@@ -87,6 +94,7 @@ const HrEmployee = ({ employee, visible, onClose, isEdit = false }) => {
                             type: 'success',
                             duration: 1
                         });
+                        setWorkingInforChange(false);
                     } else {
                         ShowNotification({
                             message: 'Failed',
@@ -97,7 +105,7 @@ const HrEmployee = ({ employee, visible, onClose, isEdit = false }) => {
                     }
                 }
                 if (prevJobChange) {
-                    const responsePrevJob = await PutData({url: update.JobHistory, data: value});
+                    const responsePrevJob = await PutData({ url: update.JobHistory, data: value });
                     console.log('Previous Job Change Response:', responsePrevJob);
                     if (responsePrevJob === true) {
                         ShowNotification({
@@ -106,6 +114,8 @@ const HrEmployee = ({ employee, visible, onClose, isEdit = false }) => {
                             type: 'success',
                             duration: 1
                         });
+                        setPrevJobChange(false);
+
                     } else {
                         ShowNotification({
                             message: 'Failed',
@@ -115,12 +125,8 @@ const HrEmployee = ({ employee, visible, onClose, isEdit = false }) => {
                         });
                     }
                 }
-                // Đặt lại trạng thái sự thay đổi sau khi gửi thành công
-                setBenefitChange(false);
-                setPersonalChange(false);
-                setEmploymentChange(false);
-                setWorkingInforChange(false);
-                setPrevJobChange(false);
+                if (!change && !benefitChange && !personalChange && !employmentChange && !workingInforChange && !prevJobChange)
+                    setChange(false);
 
                 // Hiển thị thông báo thành công
                 ShowNotification({
@@ -137,8 +143,13 @@ const HrEmployee = ({ employee, visible, onClose, isEdit = false }) => {
                     duration: 1
                 })
             }
-        }
-
+        } else
+            ShowNotification({
+                message: 'Failed',
+                description: 'Dont have a changes',
+                type: 'error',
+                duration: 1
+            })
     }
     const handleValuesChange = (value) => setChange(true)
     return (

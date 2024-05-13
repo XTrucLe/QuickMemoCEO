@@ -1,9 +1,10 @@
 import { Form, Input } from 'antd'
 import React from 'react'
 
-const PrEmployee = ({ employee, onChange,disableItem = true }) => {
-  const setChange=()=>{
-    onChange(true)
+const PrEmployee = ({ employee, onChange, disableItem = true }) => {
+  const setChange = () => {
+    if (onChange)
+      onChange(true)
   }
   return (
     <div className='grid grid-cols-2 gap-x-5'>

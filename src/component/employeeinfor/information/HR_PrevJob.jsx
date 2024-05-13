@@ -3,9 +3,10 @@ import { DatePicker, Form, Input } from 'antd'
 import dayjs from 'dayjs';
 
 const PrevJob = ({ employee, onChange }) => {
-    const setChange=()=>{
-        onChange(true)
-      }
+    const setChange = () => {
+        if (onChange)
+            onChange(true)
+    }
     return (
         <div className='grid grid-cols-2 w-full gap-x-5 mb-auto'>
             <p className='p-2 col-span-2 bg-green-500 mb-1'>Previous job information</p>
@@ -13,7 +14,7 @@ const PrevJob = ({ employee, onChange }) => {
             <Form.Item
                 label="Job History ID"
                 name="JOB_HISTORY_ID"
-                rules={employee?.JOB_HISTORY_ID ? [] :[{ required: true, message: 'Please input the job history ID!' }]}
+                rules={employee?.JOB_HISTORY_ID ? [] : [{ required: true, message: 'Please input the job history ID!' }]}
             >
                 <Input className='w-full' onChange={setChange} defaultValue={employee?.JOB_HISTORY_ID} />
             </Form.Item>
@@ -21,7 +22,7 @@ const PrevJob = ({ employee, onChange }) => {
             <Form.Item
                 label="Department"
                 name="DEPARTMENT"
-                rules={employee?.DEPARTMENT ? [] :[{ required: true, message: 'Please input the department!' }]}
+                rules={employee?.DEPARTMENT ? [] : [{ required: true, message: 'Please input the department!' }]}
             >
                 <Input className='w-full' onChange={setChange} defaultValue={employee?.DEPARTMENT} />
             </Form.Item>
@@ -29,7 +30,7 @@ const PrevJob = ({ employee, onChange }) => {
             <Form.Item
                 label="Division"
                 name="DIVISION"
-                rules={employee?.DIVISION ? [] :[{ required: true, message: 'Please input the division!' }]}
+                rules={employee?.DIVISION ? [] : [{ required: true, message: 'Please input the division!' }]}
             >
                 <Input className='w-full' onChange={setChange} defaultValue={employee?.DIVISION} />
             </Form.Item>
@@ -37,7 +38,7 @@ const PrevJob = ({ employee, onChange }) => {
             <Form.Item
                 label="From Date"
                 name="FROM_DATE"
-                rules={employee?.FROM_DATE ? [] :[{ required: true, message: 'Please input the from date!' },
+                rules={employee?.FROM_DATE ? [] : [{ required: true, message: 'Please input the from date!' },
                 //set rule days need before today
                 ({ getFieldValue }) => ({
                     validator(rule, value) {
@@ -60,7 +61,7 @@ const PrevJob = ({ employee, onChange }) => {
             <Form.Item
                 label="Thru Date"
                 name="THRU_DATE"
-                rules={employee?.THRU_DATE ? [] :[
+                rules={employee?.THRU_DATE ? [] : [
                     { required: true, message: 'Please input the thru date!' },
                     // Set rule is after From_date and before today
                     ({ getFieldValue }) => ({
@@ -91,7 +92,7 @@ const PrevJob = ({ employee, onChange }) => {
             <Form.Item
                 label="Job Title"
                 name="JOB_TITLE"
-                rules={employee?.JOB_TITLE ? [] :[{ required: true, message: 'Please input the job title!' }]}
+                rules={employee?.JOB_TITLE ? [] : [{ required: true, message: 'Please input the job title!' }]}
             >
                 <Input className='w-full' onChange={setChange} defaultValue={employee?.JOB_TITLE} />
             </Form.Item>
@@ -99,7 +100,7 @@ const PrevJob = ({ employee, onChange }) => {
             <Form.Item
                 label="Supervisor"
                 name="SUPERVISOR"
-                rules={employee?.SUPERVISOR ? [] :[{ required: true, message: 'Please input the supervisor!' }]}
+                rules={employee?.SUPERVISOR ? [] : [{ required: true, message: 'Please input the supervisor!' }]}
             >
                 <Input className='w-full' onChange={setChange} defaultValue={employee?.SUPERVISOR} />
             </Form.Item>
@@ -107,7 +108,7 @@ const PrevJob = ({ employee, onChange }) => {
             <Form.Item
                 label="Location"
                 name="LOCATION"
-                rules={employee?.LOCATION ? [] :[{ required: true, message: 'Please input the location!' }]}
+                rules={employee?.LOCATION ? [] : [{ required: true, message: 'Please input the location!' }]}
             >
                 <Input className='w-full' onChange={setChange} defaultValue={employee?.LOCATION} />
             </Form.Item>
@@ -115,7 +116,7 @@ const PrevJob = ({ employee, onChange }) => {
             <Form.Item
                 label="Type of Work"
                 name="TYPE_OF_WORKS"
-                rules={employee?.TYPE_OF_WORKS ? [] :[{ required: true, message: 'Please input the type of work!' }]}
+                rules={employee?.TYPE_OF_WORKS ? [] : [{ required: true, message: 'Please input the type of work!' }]}
             >
                 <Input className='w-full' onChange={setChange} defaultValue={employee?.TYPE_OF_WORK} />
             </Form.Item>

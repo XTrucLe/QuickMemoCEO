@@ -28,7 +28,7 @@ const AddEmployment = () => {
     layout='horizontal'
     onFinish={onFinish}
     >
-      <Employment disableItem={false}/>
+      <Employment disableItem={false} onChange/>
       <Form.Item>
         <Button
          type='primary' htmlType='submit'

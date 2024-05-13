@@ -4,7 +4,8 @@ import { DatePicker, Form, Input, InputNumber } from 'antd'
 
 const Employment = ({ employee, onChange, disableItem = true }) => {
   const setChange = () => {
-    onChange(true)
+    if (typeof onChange==='function')
+      onChange(true)
   }
   return (
     <div className='grid grid-cols-2 gap-x-5 mb-auto'>
@@ -17,7 +18,7 @@ const Employment = ({ employee, onChange, disableItem = true }) => {
             { required: true, message: 'Please input the Personal ID!' }
           ]}
         >
-          <Input onChange={setChange} defaultValue={employee?.PERSONAL_ID ? employee.PERSONAL_ID : undefined} />
+          <Input defaultValue={employee?.PERSONAL_ID ? employee.PERSONAL_ID : undefined} />
         </Form.Item>
 
       }
