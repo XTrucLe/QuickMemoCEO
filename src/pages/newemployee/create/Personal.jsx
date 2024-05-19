@@ -6,10 +6,10 @@ import ShowNotification from '../../../component/notifications/ShowNotifocation'
 import { create } from '../../../api';
 
 const AddPersonal = () => {
-  const onFinish = (value) => {
-    const response = postData({ url: create.personal, data: value })
+  const onFinish = async(value) => {
+    const response = await postData({ url: create.personal, data: value })
 
-    if (!response)
+    if (response===true)
       ShowNotification({
         message: 'Successfull',
         description: 'Create a new personal is successfull',

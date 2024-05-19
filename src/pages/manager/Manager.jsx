@@ -3,7 +3,7 @@ import { Button, Table } from 'antd'
 import DeleteConfirm from './../../component/modal/Confirm';
 import { handleActionClick } from './../../component/table/action/HandleAction';
 import EmployeeModal from '../../component/modal/Admin_Employee';
-import { ListAPI, Manage } from '../../api';
+import { CRUD, Manage } from '../../api';
 import { HandleSearch } from '../../component/search/HandleSearch';
 import { SearchContext } from './../../layout/Layout';
 import GetData from './../../api/REST/Get';
@@ -16,8 +16,7 @@ const Manager = () => {
   const { searchTerm } = useContext(SearchContext)
 
   //get data from API
-  const getData = GetData({ url: Manage.employeeInfo, dataField: 'ListEmployment' })
-
+  const getData = GetData({ url: Manage.employeeInfo, dataField: '' })
   useEffect(() => {
     try {
       //filter table data fields based on the search term
@@ -29,19 +28,20 @@ const Manager = () => {
 
   //defind colum on the manage table
   const columns = [
-    {
-      title: 'PERSONAL_ID',
-      dataIndex: 'PERSONAL_ID',
-      key: 'PERSONAL_ID',
-      width: '115px'
-    },
+    
     {
       title: 'No.Employee',
       dataIndex: 'EmployeeNumber',
       key: 'EmployeeNumber',
       width: '115px',
-      sorter: (a, b) => a['Employee Number'] - b['Employee Number'], // Sort by Employee Number
+      sorter: (a, b) => a.EmployeeNumber - b.EmployeeNumber, // Sort by Employee Number
       sortDirections: ['ascend', 'descend'],
+    },
+    {
+      title: 'Status',
+      dataIndex: 'EMPLOYMENT_STATUS',
+      key: 'EMPLOYMENT_STATUS',
+      width: '115px'
     },
     {
       title: 'Full Name',
@@ -56,7 +56,7 @@ const Manager = () => {
       dataIndex: 'CURRENT_GENDER',
       key: 'CURRENT_GENDER',
       filters: [//filter values
-        { text: 'Male', value: 'Female' },
+        { text: 'Male', value: 'Male' },
         { text: 'Female', value: 'Female' },
       ],
       onFilter: (value, record) => record.CURRENT_GENDER === value,
@@ -114,8 +114,8 @@ const Manager = () => {
       {/* Modals in table */}
       {modalType === 'delete' && (
         <DeleteConfirm
-          id={selectedEmployee.idEmployee}
-          deleteAPI={ListAPI.DeleteAPI}
+          id={selectedEmployee.idEmployee || selectedEmployee.EMPLOYMENT_ID}
+          deleteAPI={CRUD.delete}
           visible={true}
           onClose={handleModalClose}
         />

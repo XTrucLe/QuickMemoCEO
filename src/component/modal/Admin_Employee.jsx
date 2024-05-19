@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Modal } from 'antd';
 import PayRatesForm from '../employeeinfor/information/PR_PayRate';
 import Personal from '../employeeinfor/information/HR_Personal';
@@ -8,34 +8,44 @@ import PrevJob from './../employeeinfor/information/HR_PrevJob';
 import Benefit from './../employeeinfor/information/HR_Benefit';
 import WorkingInfor from '../employeeinfor/information/HR_Working';
 import { Button } from 'antd';
-import { PutData } from './../../api/REST/Put';
-import ShowNotification from '../notifications/ShowNotifocation';
-import { update } from '../../api';
+import { handleAlert } from './HandleAlert';
 
 const EmployeeModal = ({ employee, visible, onClose, isEdit = false }) => {
-  //   const [change, setChange] = useState(false)
-  //   const [benefitChange, setBenefitChange] = useState(false)
-  //   const [personalChange, setPersonalChange] = useState(false)
-  //   const [employmentChange, setEmploymentChange] = useState(false)
-  //   const [workingInforChange, setWorkingInforChange] = useState(false)
-  //   const [prevJobChange, setPrevJobChange] = useState(false)
-    
-  const onFinish = (value) => {
-    if (isEdit) {
-      const response = PutData({ url: update.JobHistory, data: value })
-      console.table(value)
-      if (response === true)
-        ShowNotification({
-          message: 'Successfully updated',
-          description: 'update data is successful',
-          type: 'success', duration: 1,
-        })
-      else
-        ShowNotification({
-          message: 'Failed to update',
-          description: 'update data is error',
-          type: 'error', duration: 1,
-        })
+    const [change, setChange] = useState(false)
+    const [benefitChange, setBenefitChange] = useState(false)
+    const [personalChange, setPersonalChange] = useState(false)
+    const [employmentChange, setEmploymentChange] = useState(false)
+    const [workingInforChange, setWorkingInforChange] = useState(false)
+    const [prevJobChange, setPrevJobChange] = useState(false)
+    const [payrateChange, setPayrateChange] = useState(false)
+    const [initialValues, setInitialValues] = useState({});
+
+    useEffect(() => {
+        if (employee) {
+            setInitialValues(employee); // Thiết lập giá trị mặc định từ employee
+        }
+    }, [employee]);
+
+  const onFinish = async (value) => {
+    const combinedValues = { ...initialValues, ...value }; // Combine default and changed values
+
+    if (change) {
+      await handleAlert({
+        value:combinedValues,
+        benefitChange,
+        setBenefitChange,
+        personalChange,
+        setPersonalChange,
+        employmentChange,
+        setEmploymentChange,
+        workingInforChange,
+        setWorkingInforChange,
+        prevJobChange,
+        setPrevJobChange,
+        payrateChange, 
+        setPayrateChange,
+        setChange
+      });
     }
   }
   return (
@@ -50,6 +60,7 @@ const EmployeeModal = ({ employee, visible, onClose, isEdit = false }) => {
         <Form
           disabled={!isEdit}
           layout='vertical'
+          initialValues={initialValues}
           onFinish={onFinish}
           className='mb-3'
         >

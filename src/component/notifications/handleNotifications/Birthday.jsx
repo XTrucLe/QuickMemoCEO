@@ -22,15 +22,17 @@ function BirthdayNotification({ data }) {
             }
 
             const daysUntilBirthday = Math.ceil((nextBirthday - today) / (1000 * 60 * 60 * 24));
+            if (daysUntilBirthday < 200) {
+                const birthdayMessage = {
+                    title: "Birthday Notification",
+                    dateTime:  dayjs(person.BIRTH_DATE).format('DD-MM-YYYY'),
+                    fullName: `${person.CURRENT_FIRST_NAME} ${person.CURRENT_LAST_NAME}`,
+                    message: `${person.CURRENT_FIRST_NAME} ${person.CURRENT_LAST_NAME}'s birthday is in ${daysUntilBirthday} ${daysUntilBirthday > 1 ? "days" : "day"} !`
+                };
 
-            const birthdayMessage = {
-                title: "Birthday Notification",
-                dateTime: dayjs(nextBirthday).format('ss:mm:HH DD-MM-YYYY'),
-                fullName: `${person.CURRENT_FIRST_NAME} ${person.CURRENT_LAST_NAME}`,
-                message: `${person.CURRENT_FIRST_NAME} ${person.CURRENT_LAST_NAME}'s birthday is in ${daysUntilBirthday} days`
-            };
+                processedMessages.push(birthdayMessage);
+            }
 
-            processedMessages.push(birthdayMessage);
         });
 
         return processedMessages;
@@ -40,3 +42,4 @@ function BirthdayNotification({ data }) {
 }
 
 export default BirthdayNotification;
+

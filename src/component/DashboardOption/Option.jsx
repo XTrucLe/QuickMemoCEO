@@ -7,12 +7,12 @@ import { faArrowRight,faBell, faCalendar, faUserGroup  } from '@fortawesome/free
 const OptionLists =[
   {icon: faUserGroup , nameOption:'Employee', value:'13',bg_icon_color:'#ff976a', bg_infor_color:'#FFA87D', bg_view_color:'#EF8759'},
   {icon: faBell , nameOption:'Notification', value:'26',bg_icon_color:'#08C080', bg_infor_color:'#10C888', bg_view_color:'#0F9E6C'},
-  {icon: faCalendar , nameOption:'Calendar', value:'6',bg_icon_color:'#ff6275', bg_infor_color:'#FF7588', bg_view_color:'#E3485B'},
+  {icon: faCalendar , nameOption:'Day off', value:'6',bg_icon_color:'#ff6275', bg_infor_color:'#FF7588', bg_view_color:'#E3485B'},
 ] 
 
 const Option = () => {
   return (
-    <div className='grid grid-cols-3 w-full gap-5'>
+    <div className='grid grid-cols-3 w-full gap-5 place-items-center'>
       {OptionLists.map((option, index) => (
         <div className='relative flex w-80 h-52 text-white border-none overflow-hidden rounded-xl' key={index}>
           <div className='flex items-center justify-center w-2/6 h-full  text-6xl' style={{background:option?.bg_icon_color}}>

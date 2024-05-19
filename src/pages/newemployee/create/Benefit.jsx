@@ -2,24 +2,23 @@ import React from 'react'
 import ShowNotification from '../../../component/notifications/ShowNotifocation';
 import { postData } from '../../../api/REST/Post';
 import { Button, Form } from 'antd';
-import Employment from '../../../component/employeeinfor/information/HR_Employment';
 import { create } from '../../../api';
+import Benefit from '../../../component/employeeinfor/information/HR_Benefit';
 
-const AddEmployment = () => {
+const AddBenefit = () => {
   const onFinish = async (value) => {
-    console.log(value)
-    const response = await postData({ url: create.employment, data: value })
+    const response = await postData({ url: create.benefit, data: value })
     if (response === true)
       ShowNotification({
         message: 'Successfully',
-        description: 'Successfully created new employee',
+        description: 'Successfully created new benefit',
         type: 'success',
         duration: 2
       });
     else
       ShowNotification({
         message: 'Failed',
-        description: 'Failed to create employee',
+        description: 'Failed to create benefit',
         type: 'error',
         duration: 2
       });
@@ -29,7 +28,7 @@ const AddEmployment = () => {
       layout='horizontal'
       onFinish={onFinish}
     >
-      <Employment disableItem={false} onChange />
+      <Benefit />
       <Form.Item>
         <Button
           type='primary' htmlType='submit'
@@ -41,4 +40,4 @@ const AddEmployment = () => {
   )
 }
 
-export default AddEmployment
+export default AddBenefit

@@ -1,42 +1,43 @@
-
 const domain ='http://localhost'
 const port ='8081'
 const path=`${domain}:${port}`
-export const ListAPI={
-    PR_employeeAPI:`${path}/home`,
-    DashboardAPI:`${path}`,//? Waiting Conection
-    DeleteAPI:`${path}/deleteinfo`,
 
-    MGR_GetAll:`${path}`,//? Waiting Conection
-}
 export const EmployeeAPI={
-    getEmployee:`${path}/allEmployment`,
+    getEmployee:`${path}/HRM`,
 }
 export const payroll={
-    allEmployee:`${path}/allPayroll`,
+    allEmployee:`${path}/mydb`,
 }
 export const Manage={
-    employeeInfo:`${path}/allInformation`,
+    employeeInfo:`${path}/All`,
     delete:`${path}/deleteEmployee`,
 }
 export const notification={
-    aniversary:`${path}/aniversary`,
+    aniversary:`${path}/hiringday`,
     birthDay: `${path}/birthday`,
-    benefit_plant: `${path}/effectplant`,
+    benefit_plan: `${path}/effectplan`,
     exceeded_vacation:`${path}/more_vacation`,
 }
 
 export const create={
     personal:`${path}/creates_personal`,
-    employment:`${path}/employment`,
+    employment:`${path}/employmentCre`,
     working:`${path}/employent_working_time`,
     payroll:`${path}/creates_payrate`,
+    benefit:`${path}/benefit`,
 }
 export const update={
-    personal:`${path}/update_personal`,
-    employment:`${path}/update_employment`,
-    JobHistory:`${path}/update_JobHistory`,
-    working:`${path}/update_employment_working_time`,
-    benefit:`${path}/update_benefit`,
-    payrate:`${path}/update_payrate`,
+    all:`${path}/updateAll`,
+}
+export const CRUD={
+    delete:`${path}/delete`
+}
+export const chart={
+    barchart: `${path}/dashboard_department`,
+    piechart: `${path}/dashboard_department`,
+}
+export const statistical={
+    benefit:`${path}/shareholder`,
+    income:`${path}/income`,
+    vacation:`${path}/vacation_days`,
 }

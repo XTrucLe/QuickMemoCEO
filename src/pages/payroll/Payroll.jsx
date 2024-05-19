@@ -1,5 +1,5 @@
 import { React, useContext, useEffect, useState } from 'react'
-import { Button, Table } from 'antd';
+import { Table } from 'antd';
 import GetData from '../../api/REST/Get';
 import { handleActionClick } from '../../component/table/action/HandleAction';
 import { HandleSearch } from '../../component/search/HandleSearch';
@@ -14,7 +14,7 @@ export const Payroll = () => {
   const { searchTerm } = useContext(SearchContext)
 
 
-  const newData = GetData({ url: payroll.allEmployee, dataField: 'ListPayRoll' })
+  const newData = GetData({ url: payroll.allEmployee, dataField: 'data' })
   useEffect(() => {
     try {
       setTableData(HandleSearch({ data: newData, searchText: searchTerm }));

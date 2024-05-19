@@ -50,11 +50,12 @@ const PrevJob = ({ employee, onChange }) => {
                     },
                 }),]}
             >
-                <DatePicker
-                    format="MM/DD/YYYY" disabledTime
+                <Input
+                    type="date"
                     className='w-full'
-                    onChange={setChange} defaultValue={employee && employee.FROM_DATE ? dayjs(employee.FROM_DATE) : ''}
-
+                    
+                    onChange={e => setChange(e.target.value ? dayjs(e.target.value).format("YYYY-MM-DD") : '')}
+                    defaultValue={employee && employee.FROM_DATE ? dayjs(employee.FROM_DATE).format("YYYY-MM-DD") : ''}
                 />
             </Form.Item>
 
@@ -83,10 +84,12 @@ const PrevJob = ({ employee, onChange }) => {
                     }),
                 ]}
             >
-                <DatePicker
+                <Input
+                    type="date"
                     className='w-full'
-                    format="MM/DD/YYYY" disabledTime
-                    onChange={setChange} defaultValue={employee && employee.THRU_DATE ? dayjs(employee?.THRU_DATE) : ''} />
+                    onChange={e => setChange(e.target.value ? dayjs(e.target.value).format("YYYY-MM-DD") : '')}
+                    defaultValue={employee && employee.THRU_DATE ? dayjs(employee.THRU_DATE).format("YYYY-MM-DD") : ''}
+                />
             </Form.Item>
 
             <Form.Item

@@ -7,9 +7,9 @@ import PayRates from './../../../component/employeeinfor/information/PR_PayRate'
 import { create } from '../../../api';
 
 const AddPayRoll = () => {
-  const onFinish = (value) => {
-    const response = postData({ url: create.payroll, data: value })
-    if (!response)
+  const onFinish =async (value) => {
+    const response =await postData({ url: create.payroll, data: value })
+    if (response===true)
       ShowNotification({
         message: 'Successfully',
         description: 'Create a new data is successful',

@@ -6,9 +6,9 @@ import WorkingInfor from '../../../component/employeeinfor/information/HR_Workin
 import { create } from '../../../api';
 
 const AddWorking = () => {
-  const onFinish = (value) => {
-    const response = postData({ url: create.working, data: value })
-    if (!response)
+  const onFinish = async (value) => {
+    const response =await postData({ url: create.working, data: value })
+    if (response===true)
       ShowNotification({
         message: 'Successfully',
         description: 'Added data successfully',

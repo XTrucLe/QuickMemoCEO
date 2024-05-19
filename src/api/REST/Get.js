@@ -4,19 +4,20 @@ import { useEffect, useState } from 'react';
 const GetData = ({ url, dataField = null }) => {
   const [tableData, setTableData] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(url);
-        setTableData(response?.data[dataField] || []);
-  
+        const result = response?.data[dataField]|| response.data || []
+        setTableData(result);
+
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
-  
+
     fetchData();
-  },[url,dataField])
+  }, [url, dataField])
 
   return tableData;
 };

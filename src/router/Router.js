@@ -15,6 +15,7 @@ import AddWorking from '../pages/newemployee/create/Working'
 import AddPayRoll from '../pages/newemployee/create/Payroll'
 import AddPersonal from './../pages/newemployee/create/Personal'
 import DayOff from '../pages/Employee/DayOff'
+import AddBenefit from '../pages/newemployee/create/Benefit'
 
 //List of routers to use for page navigation
 const defaultRouter = [
@@ -90,6 +91,10 @@ const defaultRouter = [
     {
         path: '/manage/newEmployee/Payroll',
         element: <AddPayRoll />
+    },
+    {
+        path: '/manage/newEmployee/Benefit',
+        element: <AddBenefit />
     },
 ]
 export { defaultRouter }

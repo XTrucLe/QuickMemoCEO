@@ -47,9 +47,11 @@ const Personal = ({ employee, onChange }) => {
         name="BIRTH_DATE"
         rules={employee?.BIRTH_DATE ? [] : [{ required: true, message: "Please select Birth Date" }]}
       >
-        <DatePicker format="MM/DD/YYYY"
-          showTime={false} className='w-full'
-          onChange={setChange} defaultValue={employee && employee.BIRTH_DATE ? dayjs(employee?.BIRTH_DATE) : ''}
+        <Input
+          type="date"
+          className='w-full'
+          onChange={setChange}
+          defaultValue={employee && employee.BIRTH_DATE ? dayjs(employee?.BIRTH_DATE).format("YYYY-MM-DD") : ''}
         />
       </Form.Item>
 
@@ -187,9 +189,9 @@ const Personal = ({ employee, onChange }) => {
         label="Shareholder Status"
         rules={employee?.SHAREHOLDER_STATUS ? [] : [{ required: true, message: "Please select Shareholder Status" }]}
       >
-        <Select onChange={setChange} defaultValue={employee?.SHAREHOLDER_STATUS}>
-          <Select.Option value="1">Yes</Select.Option>
-          <Select.Option value="0">No</Select.Option>
+        <Select onChange={(value)=>parseInt(value)} defaultValue={employee?.SHAREHOLDER_STATUS}>
+          <Select.Option value={1}>Yes</Select.Option>
+          <Select.Option value={0}>No</Select.Option>
         </Select>
       </Form.Item>
     </div>

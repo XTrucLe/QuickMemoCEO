@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const PutData = async ({url, data}) => {
+export const PutData = async ({url, data, id}) => {
     try {
-        const response = await axios.put(url, data);
+        const response = await axios.put(`${url}`, data);
         console.log(response)
         // Kiểm tra nếu mã trạng thái nằm trong khoảng 200 - 299 (thành công)
         if (response.status >= 200 && response.status < 300) {

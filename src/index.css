@@ -87,8 +87,3 @@ code {
   color: black; /* Đổi màu chữ thành đen */
 }
 
-/* Ghi đè màu viền cho TextArea khi form disable */
-.ant-input[disabled], .ant-input-disabled, .ant-input-disabled::placeholder, 
-.ant-input[disabled]:hover, .ant-input-disabled:hover, .ant-input-disabled:hover::placeholder {
-  border-color: black; /* Đổi màu viền thành đen */
-}

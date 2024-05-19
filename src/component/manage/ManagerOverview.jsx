@@ -5,39 +5,40 @@ import { faFaceSmile } from '@fortawesome/free-regular-svg-icons'
 import axios from 'axios'
 
 const overView = [
-    { icon: faUserGroup, name: 'Total Employees', value: '', endPoint: '' },
-    { icon: faUserCheck, name: 'Active Employees', value: 181, endPoint:'' },
-    { icon: faFaceSmile, name: 'On Leave', value: 17, endPoint: '' },
-    { icon: faBriefcase, name: 'Onboarding', value: 27, endPoint: '' },
+    { icon: faUserGroup, name: 'Total Employees', value: '', object:'TotalEmployees'},
+    { icon: faUserCheck, name: 'Active Employees', value: 181, object:'ActiveEmployees' },
+    { icon: faFaceSmile, name: 'On Leave', value: 17, object:'NotActiveEmployees'},
+    // { icon: faBriefcase, name: 'Onboarding', value: 27, endPoint: '' },
 ]
 
 const ManagerOverview = () => {
     const [overViewData, setOverviewData] = useState([])
     
-    const fetchData = async (item) => {
-        const response = await axios.get(item.endPoint);
-        return {...item, value: response?.data.ListEmployee.length };
+    const fetchData = async () => {
+        const response = await axios.get('http://localhost:8081/ManagerOverview');       
+        return response.data.overview
       };
     
       useEffect(() => {
-        const fetchDataForItems = overView
-         .filter((item) => item.endPoint) // Only fetch data for items with a valid endpoint
-         .map((item) => fetchData(item));
-    
-        Promise.all(fetchDataForItems)
-         .then((updatedOverView) => {
-            setOverviewData(updatedOverView);
-          })
-         .catch((error) => {
-            console.error(error);
+        const fetchAndUpdateData = async () => {
+          const newData = await fetchData();
+          const updatedOverView = overView.map((item, index) => {
+            return {
+              ...item,
+              value: newData[0][item.object] // Assuming `newData` has the same order as `overView`
+            };
           });
+          setOverviewData(updatedOverView);
+        };
+    
+        fetchAndUpdateData();
       }, []);
 
       
 
     return (
-        <div className="p-4">
-            <div className="flex flex-wrap gap-4 mt-0 h-auto ">
+        <div className="flex justify-items-center items-center p-4">
+            <div className="flex flex-wrap gap-14 mt-6 h-auto ">
                 {overViewData.map((employee) => (
                     <div key={employee.name} className='flex border border-black min-w-56 h-auto rounded-xl bg-slate-50 select-none'>
                         <div className='w-1/4 h-full font-medium text-4xl grid place-items-center text-red-500  '>

@@ -10,24 +10,37 @@ const NewEmployee = () => {
   return (
     <div className='grid place-items-center grid-cols-1 w-full h-auto px-6'>
       <FloatingForm />
-      <div className='flex w-full  justify-around'>
-        <Button ghost type="primary" className={buttonStyle}>
-          <Link to="/manage/newEmployee/Personal">Create Personal Information</Link>
-        </Button>
+      <div className='flex w-full justify-around'>
+        <Link to="/manage/newEmployee/Personal">
+          <Button ghost type="primary" className={buttonStyle}>
+            Create Personal Information
+          </Button>
+        </Link>
 
-        <Button ghost type="primary" className={buttonStyle}>
-          <Link to="/manage/newEmployee/Employment">Create Employment Information</Link>
-        </Button>
+        <Link to="/manage/newEmployee/Employment">
+          <Button ghost type="primary" className={buttonStyle}>
+            Create Employment Information
+          </Button>
+        </Link>
 
-        <Button ghost type="primary" className={buttonStyle}>
-          <Link to="/manage/newEmployee/Working">Working Information</Link>
-        </Button>
+        <Link to="/manage/newEmployee/Working">
+          <Button ghost type="primary" className={buttonStyle}>
+            Create Working Information
+          </Button>
+        </Link>
 
-        <Button ghost type="primary" className={buttonStyle}>
-          <Link to="/manage/newEmployee/Payroll">Pay Roll Information</Link>
-        </Button>
+        <Link to="/manage/newEmployee/Payroll">
+          <Button ghost type="primary" className={buttonStyle}>
+            Create Pay Roll Information
+          </Button>
+        </Link>
+
+        <Link to="/manage/newEmployee/Benefit">
+          <Button ghost type="primary" className={buttonStyle}>
+            Create New Benefit
+          </Button>
+        </Link>
       </div>
-
     </div>
   )
 }

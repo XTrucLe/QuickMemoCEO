@@ -2,10 +2,14 @@ import axios from 'axios';
 
 export const postData = async ({ url, data }) => {
   try {
-    const { status } = await axios.post(url, data);
-    return status >= 200 && status < 300;
+    const response = await axios.post(url, data);
+    console.log(response);
+    if (response.status >= 200 && response.status < 300)
+      return true
+    else
+      return false
   } catch (error) {
     console.error(error);
-    return false;
+    return false
   }
 };

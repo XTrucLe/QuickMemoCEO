@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Triangle from '../../component/triangle/Triangle'
 import GetData from '../../api/REST/Get'
 import { notification } from '../../api'
-import BirthdayNotification from '../../component/notifications/handle/Birthday'
+import BirthdayNotification from '../../component/notifications/handleNotifications/Birthday'
 import { Card } from 'antd';
 
 const BirthDays = () => {
@@ -23,13 +23,13 @@ const BirthDays = () => {
     <div className='grid grid-cols-1 w-full h-auto'>
       <Triangle size={triangle.size} location={triangle.location} color={triangle.color} />{/* small triangle in top notification container */}
       <div className=' w-full h-screen p-3 rounded-xl' style={{ background: '#b3fce6' }}>{/* container of notifiaction */}
-        {notiData.map((notification, index) => (
+        {notiData.length !== 0 ? notiData.map((notification, index) => (
           <Card key={index} title={notification.title}>
             <p><strong>Name:   </strong>{notification.fullName}</p>
             <p><strong>Date:   </strong>{notification.dateTime}</p>
             <p><strong>Message: </strong>{notification.message}</p>
           </Card>
-        ))}
+        )) : <p>No notification for Birthdays notification</p>}
       </div>
     </div>
   )
