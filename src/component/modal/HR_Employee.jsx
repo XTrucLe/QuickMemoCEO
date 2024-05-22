@@ -6,7 +6,6 @@ import WorkingInfor from '../employeeinfor/information/HR_Working'
 import Benefit from '../employeeinfor/information/HR_Benefit'
 import Employment from '../employeeinfor/information/HR_Employment'
 import ShowNotification from '../notifications/ShowNotifocation'
-import { handleAlert } from './HandleAlert'
 import { PutData } from '../../api/REST/Put'
 import { update } from '../../api'
 
@@ -31,12 +30,29 @@ const HrEmployee = ({ employee, visible, onClose, isEdit = false }) => {
             console.log(initialValues)
         }
     }, [employee, initialValues]);
+
     const onFinish = async (value) => {
         const combinedValues = mergeObjects(initialValues, value); // Combine default and changed values
         console.log(initialValues, value, 'combine', combinedValues)
         if (change) {
             const res = await PutData({ url: update.all, data: combinedValues, id: initialValues.PERSONAL_ID })
-            console.log(res)
+            if (res === true) {
+                ShowNotification({
+                    message: 'Success',
+                    description: 'Update successful',
+                    type: 'success',
+                    duration: 1
+                })
+         
+            } else {
+                ShowNotification({
+                    message: 'Failed',
+                    description: 'Update failed',
+                    type: 'error',
+                    duration: 1
+                })
+            }
+
         }
         else {
             ShowNotification({
@@ -66,7 +82,7 @@ const HrEmployee = ({ employee, visible, onClose, isEdit = false }) => {
                     <Personal employee={employee} />
                     <Employment employee={employee} />
                     <WorkingInfor employee={employee} />
-                    {!isEdit &&(<Benefit employee={employee} />)}
+                    {!isEdit && (<Benefit employee={employee} />)}
                     <PrevJob employee={employee} />
                     <Form.Item className='col-span-2'>
                         {isEdit &&

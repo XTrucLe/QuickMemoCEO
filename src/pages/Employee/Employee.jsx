@@ -1,7 +1,7 @@
 import { Button, Table } from 'antd';
 import { React, useContext, useEffect, useState } from 'react'
 import GetData from './../../api/REST/Get';
-import { EmployeeAPI } from '../../api';
+import { CRUD, EmployeeAPI } from '../../api';
 import { HandleSearch } from './../../component/search/HandleSearch';
 import { SearchContext } from './../../layout/Layout';
 import { handleActionClick } from '../../component/table/action/HandleAction';
@@ -120,7 +120,7 @@ const Employee = () => {
       )}
       {modalType === 'delete' && (
         <DeleteConfirm
-          deleteAPI={''}
+          deleteAPI={CRUD.delete}
           id={selectedEmployee.EMPLOYMENT_ID}
           visible={true}
           onClose={handleModalClose}

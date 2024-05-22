@@ -30,7 +30,7 @@ export const update={
     all:`${path}/updateAll`,
 }
 export const CRUD={
-    delete:`${path}/delete`
+    delete:`${path}/deleteinfo`
 }
 export const chart={
     barchart: `${path}/dashboard_department`,

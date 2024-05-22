@@ -17,7 +17,7 @@ const DayOff = () => {
     const [modalType, setModalType] = useState(null);
     const { searchTerm } = useContext(SearchContext)
 
-    const newData = GetData({ url: EmployeeAPI.getEmployee, dataField: 'ListEmployment' })
+    const newData = GetData({ url: EmployeeAPI.getEmployee, dataField: 'data' })
 
     useEffect(() => {
         try {

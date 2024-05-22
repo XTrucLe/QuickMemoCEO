@@ -47,7 +47,7 @@ const Manager = () => {
       title: 'Full Name',
       dataIndex: 'Full Name',
       key: 'fullName',
-      render: (text, record) => `${record['CURRENT_FIRST_NAME']} ${record['CURRENT_LAST_NAME']}`,
+      render: (text, record) => `${record['CURRENT_FIRST_NAME']} ${record['CURRENT_LAST_NAME']} ${record['CURRENT_MIDDLE_NAME']}`,
       sorter: (a, b) => a['CURRENT_FIRST_NAME'].localeCompare(b['CURRENT_FIRST_NAME']), // Sort by Full Name
       sortDirections: ['ascend', 'descend'],
     },

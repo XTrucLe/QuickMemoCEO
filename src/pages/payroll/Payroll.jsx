@@ -71,6 +71,7 @@ export const Payroll = () => {
 
   return (
     <>
+    <p className='text-xl font-bold'>Pay Roll Managerment</p>
       <Table
         columns={columns}
         pagination={{ pageSize: 50 }}

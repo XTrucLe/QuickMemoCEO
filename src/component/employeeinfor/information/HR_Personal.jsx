@@ -13,7 +13,9 @@ const Personal = ({ employee, onChange }) => {
       <Form.Item
         name="PERSONAL_ID"
         label="Personal ID"
-        rules={employee?.PERSONAL_ID ? [] : [{ required: true, message: 'Please input the Personal ID!' }]}
+        rules={employee?.PERSONAL_ID ? [] : [{ required: true, message: 'Please input the Personal ID!' },
+        
+        ]}
         className='col-span-2'
       >
         <Input onChange={setChange} defaultValue={employee?.PERSONAL_ID} />

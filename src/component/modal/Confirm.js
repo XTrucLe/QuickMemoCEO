@@ -1,17 +1,16 @@
 import React from 'react';
 import { Modal } from 'antd';
 import ShowNotification from '../notifications/ShowNotifocation';
-import axios from 'axios';
+import { DeleteData } from '../../api/REST/Delete';
 
 
 const DeleteConfirm = ({ id, deleteAPI, visible, onClose }) => {
-
-  const handleOk = async () => {
+  const handleOk = () => {
 
     try {
-      const response = await axios.delete(`${deleteAPI}/${id}`);
-      console.log(response.data)
-      if (response.status === 200) {
+      const response = DeleteData({ url: deleteAPI, id: id });
+
+      if (response === true) {
         ShowNotification({
           message: 'Succeessfull',
           description: 'Employee information is deleted!',
@@ -20,7 +19,7 @@ const DeleteConfirm = ({ id, deleteAPI, visible, onClose }) => {
         });
         onClose();//close modal
         return true; // accepted response
-        
+
       } else {
         ShowNotification({
           message: 'Failed',
@@ -33,6 +32,7 @@ const DeleteConfirm = ({ id, deleteAPI, visible, onClose }) => {
       }
     } catch (e) {
       console.error('Error deleting item:', e.message);
+      return false;
     }
   };
 

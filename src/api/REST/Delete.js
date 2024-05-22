@@ -1,12 +1,15 @@
 import axios from "axios";
 
-export const DeleteData= async(url, id)=>{
+export const DeleteData = async ({ url, id }) => {
     try {
         const response = await axios.delete(`${url}/${id}`);
-        
-        return response.status >= 200 && response.status < 300
+        if (response.status >= 200 && response.status < 300)
+            return true
+        else
+            return false;
     } catch (error) {
+        console.error(error)
         return false;
     }
-    
+
 }
